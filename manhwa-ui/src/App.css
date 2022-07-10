@@ -2,7 +2,11 @@
   text-align: left;
 }
 
-
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

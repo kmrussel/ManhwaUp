@@ -3,14 +3,23 @@ POST http://localhost:3000/manhwas HTTP/1.1
 content-type: application/json
 
 {
-    "title": "I Adopted the Male Lead",
-    "image": "I-Adopted-The-Male-Lead.jpg",
-    "authors": ["Chauma", "Marucomics"],
-    "date": null,
+    "title": "Trash of the Counts Family",
+    "image": "Trash-of-the-Counts-Family.jpg",
+    "authors": ["Elegant Yoo Ryeo Han"],
+    "date": 2019,
     "manhwaStatus": "Ongoing",
-    "genres": ["Romance", "Fantasy"],
-    "description": "When Karina wakes up inside a novel, she realizes she’s been given a chance to change the tragic lives of the male lead, Roland Bleuet, and his sister, Melisa. Karina saves up as much money as she can and makes a run for it with the children. But to her dismay, the money she has saved up isn’t enough to get the three of them to the capital. Instead, they head for Torres where Karina bumps into Duke Claude Torres, a “talent fanatic” who is obsessed with collecting talented individuals and an antagonist who will negatively impact Roland’s life in the future. Will Karina be able to protect Roland and Melisa from all dangers and give her adoptive children a better future?"
+    "genres": ["Action", "Adventure", "Comedy", "Fantasy" ],
+    "description": "When I opened my eyes, I was inside a novel.
+[The Birth of a Hero].
+[The Birth of a Hero] was a novel focused on the adventures of the main character, Choi Han, a high school boy who was transported to a different dimension from Earth, along with the birth of the numerous heroes of the continent.
+I became a part of that novel as the tr*sh of the Counts family, the family that oversaw the territory where the first village that Choi Han visits is located.
+The problem is that Choi Han becomes twisted after that village, and everyone in it, are destroyed by assassins.
+The bigger problem is the fact that this s*upid tr*sh who Ive become doesnt know about what happened in the village and messes with Choi Han, only to get beaten to a pulp.
+...This is going to be a problem.
+I feel like something serious has happened to me.
+But it was worth trying to make this my new life."
 }
+
 
 ###
 GET http://localhost:3000/genre HTTP/1.1
@@ -31,7 +40,7 @@ content-type: application/json
 POST http://localhost:3000/search HTTP/1.1
 content-type: application/json
 
-{ "title": "ma" }
+{ "title": "s" }
 
 
 ###

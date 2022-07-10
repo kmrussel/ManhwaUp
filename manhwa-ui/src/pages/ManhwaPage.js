@@ -13,8 +13,9 @@ export const ManhwaPage = ( { manhwaToShow } ) => {
 
     return(
         <div>
+            
+            <img src= {require( `../manhwaImages/${image}`).default} height={250} width={150} ></img>
             {title}
-            {image}
             {authors}
             {date}
             {genres}

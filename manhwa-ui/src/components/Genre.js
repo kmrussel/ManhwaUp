@@ -3,6 +3,7 @@ import ManhwaList from './ManhwaList';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import  { Col, Container, Row } from 'react-bootstrap';
 
 function Genre( { genre, setManhwaToShow, genreShown}) {
         const [manhwas, setManhwas] = useState([]);
@@ -34,11 +35,14 @@ function Genre( { genre, setManhwaToShow, genreShown}) {
         
     return (
         <>
-            <p>{genre}</p>
-          
+            <Container>
+            <h4>{genre}</h4>
+
             <ManhwaList manhwas={manhwas} manhwaShown = {manhwaShown} genreShown={genreShown}></ManhwaList>
 
             <Link to= {`/genre/${genre}`} genre={genre}>more</Link>
+            </Container>
+
         </>
     );
 }
