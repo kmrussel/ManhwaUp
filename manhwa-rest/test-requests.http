@@ -1,0 +1,103 @@
+###
+POST http://localhost:3000/manhwas HTTP/1.1
+content-type: application/json
+
+{
+    "title": "I Adopted the Male Lead",
+    "image": "",
+    "authors": ["chamua", "Marucomics"],
+    "date": null,
+    "manhwaStatus": "Ongoing",
+    "genres": ["Romance", "Fantasy"],
+    "description": "When Karina wakes up inside a novel, she realizes she’s been given a chance to change the tragic lives of the male lead, Roland Bleuet, and his sister, Melisa. Karina saves up as much money as she can and makes a run for it with the children. But to her dismay, the money she has saved up isn’t enough to get the three of them to the capital. Instead, they head for Torres where Karina bumps into Duke Claude Torres, a “talent fanatic” who is obsessed with collecting talented individuals and an antagonist who will negatively impact Roland’s life in the future. Will Karina be able to protect Roland and Melisa from all dangers and give her adoptive children a better future?"
+}
+
+###
+GET http://localhost:3000/genre HTTP/1.1
+
+###
+GET http://localhost:3000/manhwas HTTP/1.1
+
+###
+
+POST http://localhost:3000/manhwas/filter HTTP/1.1
+content-type: application/json
+
+
+    {"genres": ["Fantasy","Romance"]}
+
+
+###
+DELETE http://localhost:3000/movies/61041b383628704ea0453c73 HTTP/1.1
+
+
+###
+POST http://localhost:3000/movies HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Eternal Sunshine Of The Spotless Mind",
+    "year": 2004,
+    "language": "English"
+}
+
+###
+POST http://localhost:3000/movies HTTP/1.1
+content-type: application/json
+
+{
+    "title": "High Fidelity",
+    "year": 2000,
+    "language": "English"
+}
+
+###
+GET http://localhost:3000/manhwas HTTP/1.1
+content-type: application/json
+
+{
+    "genres": ["Romance"]
+}
+
+
+###
+POST http://localhost:3000/movies HTTP/1.1
+content-type: application/json
+
+{
+    "title": "No Country For Old Men",
+    "year": 2007,
+    "language": "English"
+}
+
+
+###
+POST http://localhost:3000/movies HTTP/1.1
+content-type: application/json
+
+{
+    "title": "A Serious Man",
+    "year": 2009,
+    "language": "English"
+}
+
+
+###
+POST http://localhost:3000/movies HTTP/1.1
+content-type: application/json
+
+{
+    "title": "City Of God",
+    "year": 2003,
+    "language": "Portuguese"
+}
+
+###
+POST http://localhost:3000/movies HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Parasite",
+    "year": 2019,
+    "language": "Korean"
+}
