@@ -31,13 +31,11 @@ function Genre( { genre, setManhwaToShow, genreShown}) {
             loadManhwas()
         }, [])
         
-        const test = JSON.stringify({"genres": `${genre}`})
-        const ah = typeof test
+        
     return (
         <>
             <p>{genre}</p>
-            {test}
-            {ah}
+          
             <ManhwaList manhwas={manhwas} manhwaShown = {manhwaShown} genreShown={genreShown}></ManhwaList>
 
             <Link to= {`/genre/${genre}`} genre={genre}>more</Link>

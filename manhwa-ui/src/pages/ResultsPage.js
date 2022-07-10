@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import ManhwaList from '../components/ManhwaList';
-
+import {Link} from 'react-router-dom';
 
 function ResultsPage({setManhwaToShow}){
     const filter = useParams();
@@ -46,6 +46,7 @@ function ResultsPage({setManhwaToShow}){
 
 
         <ManhwaList manhwas={manhwas} manhwaShown = {manhwaShown}></ManhwaList>
+        <Link to= {`/browse-all`}>Go back to browse all</Link>
         </>
 
     )

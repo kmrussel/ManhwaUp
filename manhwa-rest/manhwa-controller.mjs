@@ -48,6 +48,21 @@ app.get('/manhwas', (req, res) => {
         });
 });
 
+app.post('/search', (req,res) => {
+    let filter = {};
+    if (req.body.title !== undefined){
+        filter = req.body.title;
+    }
+    manhwas.findManhwas({'title' : {$regex : filter, $options :'i'} })
+        .then(manhwas => {
+            res.send(manhwas);
+        })
+        .catch(error => {
+            console.error(error)
+            res.send({ Error: 'Request failed'});
+        })
+})
+
 // POST by genres
 app.post('/manhwas/genres', (req, res) => {
     let filter = {};

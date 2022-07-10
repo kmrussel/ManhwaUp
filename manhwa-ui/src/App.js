@@ -8,11 +8,11 @@ import ManhwaPage from './pages/ManhwaPage';
 import Navigation from './components/Navigation';
 import GenrePage from './pages/GenrePage';
 import ResultsPage from './pages/ResultsPage';
+import SearchResultsPage from './pages/SearchResultsPage';
 
 function App() {
   const [manhwaToShow, setManhwaToShow] = useState([]);
   const [genreToShow, setGenreToShow] = useState([]);
-  
   if(window.Prototype) {
     delete Object.prototype.toJSON;
     delete Array.prototype.toJSON;
@@ -35,7 +35,10 @@ function App() {
             <GenrePage genreToShow={genreToShow} setManhwaToShow={setManhwaToShow}/>
           </Route>
           <Route path="/results/:filter/">
-            <ResultsPage manhwaToShow={manhwaToShow}/>
+            <ResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow}/>
+          </Route>
+          <Route path="/search-results/:search">
+            <SearchResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow}/>
           </Route>
           </div>
       </Router>

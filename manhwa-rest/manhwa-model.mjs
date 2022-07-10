@@ -35,14 +35,13 @@ const createManhwa = async( title, image, authors, date, manhwaStatus, genres, d
 
 // find manhwa by genre
 const findManhwaByGenre = async (filter) => {
-    const query = Manhwa.find({ genres: filter  });
-
+    const query = Manhwa.find({ genres: filter  }).limit(5);
     return query.exec();
 };
 
-// find all manhwa
+// find manhwa
 const findManhwas = async (filter) => {
-    const query = Manhwa.find({filter});
+    const query = Manhwa.find(filter);
     return query.exec();
 };
 
@@ -53,10 +52,8 @@ const findGenres = async () => {
     return query.exec(); 
 }
 
-
-
 db.once("open", () => {
     console.log("Successfully connected to MongoDB using Mongoose!");
 });
 
-export { createManhwa, findManhwas, findGenres, findManhwaByGenre }
+export { createManhwa, findManhwas, findGenres, findManhwaByGenre}

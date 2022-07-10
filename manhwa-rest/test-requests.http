@@ -4,8 +4,8 @@ content-type: application/json
 
 {
     "title": "I Adopted the Male Lead",
-    "image": "",
-    "authors": ["chamua", "Marucomics"],
+    "image": "I-Adopted-The-Male-Lead.jpg",
+    "authors": ["Chauma", "Marucomics"],
     "date": null,
     "manhwaStatus": "Ongoing",
     "genres": ["Romance", "Fantasy"],
@@ -28,7 +28,10 @@ content-type: application/json
 
 
 ###
-DELETE http://localhost:3000/movies/61041b383628704ea0453c73 HTTP/1.1
+POST http://localhost:3000/search HTTP/1.1
+content-type: application/json
+
+{ "title": "ma" }
 
 
 ###
