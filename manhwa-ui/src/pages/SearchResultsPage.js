@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import ManhwaList from '../components/ManhwaList';
 
 function SearchResultsPage ({setManhwaToShow}) {
@@ -35,7 +35,9 @@ function SearchResultsPage ({setManhwaToShow}) {
     return(
         
         <>
-        
+        <p>Results for {search}</p>
+        <i>Not what you wanted?</i>
+        <Link to= {`/browse-all`}>Go back to browse all</Link>
         <ManhwaList manhwas={manhwas} manhwaShown = {manhwaShown} ></ManhwaList>
         </>
     )

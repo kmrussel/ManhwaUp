@@ -15,11 +15,14 @@ export const ManhwaPage = ( { manhwaToShow } ) => {
         <div>
             
             <img src= {require( `../manhwaImages/${image}`).default} height={250} width={150} ></img>
-            {title}
-            {authors}
-            {date}
-            {genres}
-            {description}
+            
+            <h2>{title}</h2>
+            <ul>
+                <li>Author(s): {authors}</li>
+                <li>Released: {date}</li>
+                <li>{genres}</li>
+                <li>Summary: {description}</li>
+            </ul>
         </div>
     )
 

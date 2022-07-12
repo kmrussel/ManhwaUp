@@ -42,11 +42,13 @@ function ResultsPage({setManhwaToShow}){
         
     return(
         <>
-        <p>Results</p>
+        <p>Results for {genreStr}</p>
+        <i>Not what you wanted?</i>
+        <Link to= {`/browse-all`}>Go back to browse all</Link>
 
 
         <ManhwaList manhwas={manhwas} manhwaShown = {manhwaShown}></ManhwaList>
-        <Link to= {`/browse-all`}>Go back to browse all</Link>
+        
         </>
 
     )

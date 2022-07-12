@@ -35,13 +35,14 @@ function Genre( { genre, setManhwaToShow, genreShown}) {
         
     return (
         <>
-            <Container>
+            
             <h4>{genre}</h4>
 
             <ManhwaList manhwas={manhwas} manhwaShown = {manhwaShown} genreShown={genreShown}></ManhwaList>
 
-            <Link to= {`/genre/${genre}`} genre={genre}>more</Link>
-            </Container>
+            <Link to= {`/genre/${genre}`} genre={genre}>more from {genre}</Link>
+            <hr></hr>
+        
 
         </>
     );

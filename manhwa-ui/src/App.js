@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 import GenrePage from './pages/GenrePage';
 import ResultsPage from './pages/ResultsPage';
 import SearchResultsPage from './pages/SearchResultsPage';
+import InformationPage from './pages/InformationPage';
 
 function App() {
   const [manhwaToShow, setManhwaToShow] = useState([]);
@@ -19,6 +20,7 @@ function App() {
     delete String.prototype.toJSON;
 }
   return (
+    <>
     <div className="App">
       <Router>
         <Navigation/>
@@ -40,9 +42,13 @@ function App() {
           <Route path="/search-results/:search">
             <SearchResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow}/>
           </Route>
+          <Route path="/information">
+            <InformationPage/>
+          </Route>
           </div>
       </Router>
     </div>
+    </>
   );
 }
 

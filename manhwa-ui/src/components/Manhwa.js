@@ -1,15 +1,26 @@
 import React from 'react';
-import  { Col, Container, Row } from 'react-bootstrap';
+import  { ListGroup, ListGroupItem} from 'react-bootstrap';
+import { Card, CardGroup, Col, Row } from 'react-bootstrap';
 
 function Manhwa({ manhwa, manhwaShown }) {
     
     return (
-        <Col>
-        < div onClick = { () => manhwaShown(manhwa)}>
-            <p><img src= {require( `../manhwaImages/${manhwa.image}`).default} height={250} width={150} ></img></p>
-            {manhwa.title}
+        <div>
+            < div onClick = { () => manhwaShown(manhwa)}>      
+                        <p><img src= {require( `../manhwaImages/${manhwa.image}`).default} height={250} width={150} ></img></p> 
+                        {manhwa.title}
+                    </div>
+            
         </div>
-        </Col>
+
+
+                    
+
+             
+                    
+                       
+    
+        
         
 
     );
