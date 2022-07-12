@@ -14,7 +14,7 @@ function InformationPage() {
             <li><a href="#info-manhwagas">Why are there multiple authors on a manhwa?</a></li>
             <li><a href="#info-browse">Where should I start browsing?</a></li>
             <li><a href="#info-about">How can I look for a specifc manhwa?</a></li>
-            <li><a href="info-filter">How do I look for manhwas with <q><i>xyz</i> </q>genre?</a></li>
+            <li><a href="info-filter-q">How do I look for manhwas with <q><i>xyz</i></q>genre?</a></li>
 
         </ul>
         <div>
@@ -41,7 +41,7 @@ function InformationPage() {
             by clicking the advanced filter option and select the genres that interest you. </p>
         </div>
         <div>
-            <h4 id="info-filter">Advanced Filter Option</h4>
+            <h4 id="info-filter-q">Advanced Filter Option</h4>
             <p>Advanced filter allows you to search for manhwa by genres. Select the genre(s) that you wish to view and press go. 
             If multiple genres are selected, only manhwas containing all the selected genres are shown.</p>
         </div>
