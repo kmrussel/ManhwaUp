@@ -8,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json());
+app.set('view-engine', 'ejs')
 
 // POST
 app.post('/manhwas', (req, res) => {

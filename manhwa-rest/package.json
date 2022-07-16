@@ -14,6 +14,7 @@
     "express": "^4.18.1",
     "mongoose": "^6.3.3",
     "nodemon": "^2.0.16",
-    "react-collapsed": "^3.3.2"
+    "react-collapsed": "^3.3.2",
+    "ejs": "^2.6.2"
   }
 }
