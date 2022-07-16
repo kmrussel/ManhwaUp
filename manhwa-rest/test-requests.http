@@ -19,7 +19,22 @@ The bigger problem is the fact that this s*upid tr*sh who Ive become doesnt know
 I feel like something serious has happened to me.
 But it was worth trying to make this my new life."
 }
+###
+POST http://localhost:3000/register HTTP/1.1
+content-type: application/json
 
+{
+    "username": "kr",
+    "email": "ee",
+    "password": "12"
+}
+
+###
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{"email": "ee",
+"password":"12"}
 
 ###
 GET http://localhost:3000/genre HTTP/1.1

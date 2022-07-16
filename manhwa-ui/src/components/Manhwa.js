@@ -8,7 +8,7 @@ function Manhwa({ manhwa, manhwaShown }) {
         <div>
             < div onClick = { () => manhwaShown(manhwa)}>      
                         <p><img src= {require( `../manhwaImages/${manhwa.image}`).default} height={250} width={150} ></img></p> 
-                        {manhwa.title}
+                        <a>{manhwa.title}</a>
                     </div>
             
         </div>

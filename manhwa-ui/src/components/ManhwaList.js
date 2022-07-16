@@ -1,5 +1,6 @@
 import React from 'react';
 import Manhwa from './Manhwa';
+import { Link } from 'react-router-dom';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -29,7 +30,9 @@ function ManhwaList({ manhwas, manhwaShown }) {
                         </CardContent>
                         <CardHeader
                             className={"MuiCardHeader-root"}
-                            title={manhwa.title}
+                            title={
+                            <Link to={`/manhwa/${manhwa.title}`}>{manhwa.title}</Link>
+                            }
                             classes ={{
                                 title: "MuiCardHeader-title",
                                 subheader: "MuiCardHeader-subheader"

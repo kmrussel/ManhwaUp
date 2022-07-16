@@ -1,14 +1,99 @@
 import 'dotenv/config';
 import * as manhwas from './manhwa-model.mjs';
-import express from 'express';
+import * as users from './user-model.mjs';
+import express, { response } from 'express';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import * as auth from './auth.mjs';
 
 
 const app = express();
 
+
 const PORT = process.env.PORT;
 
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
 app.set('view-engine', 'ejs')
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+    );
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+    )
+    next(); 
+})
+// authentication endpoint
+app.get('/auth-endpoint', auth.auth, (res, req) =>
+{ console.log('what is ')}
+)
+
+// Login 
+app.post("/login", (req, res) => {
+    users.findUser(req.body.email)
+    .then((user) => {
+        bcrypt.compare(req.body.password, user.password)
+        .then((passwordCheck) =>
+        {if (!passwordCheck) {
+            return res.status(400).send({
+                message: "Password does not match", error
+            })
+            
+        }
+        const token = jwt.sign(
+            {
+                userId: user._id,
+                userEmail: user.email
+            },
+            "RANDOM-TOKEN",
+            { expiresIn: "24h" }
+        );
+        
+        res.status(201).send({
+            message: "Login successful",
+            email: user.email,
+            token
+         })
+        
+        })
+        .catch ((error) => {
+            res.status(400).send({
+                message: "Password doesn't match",
+                error
+            });
+           
+        });
+    })
+    .catch((e) => {
+        response.status(404).send({
+            message:"Email not found", e
+        })
+        
+    })
+
+});
+
+// Register
+app.post('/register', async (req, res) => {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    try{
+        (users.createUser(req.body.username, req.body.email, hashedPassword))
+        .then(user => {res.status(201).json(user)})
+    }
+
+    catch{(error => {
+        console.error(error);
+        res.status(400).json({ Error: 'Request Failed'})
+    })
+    }   
+         
+})
 
 // POST
 app.post('/manhwas', (req, res) => {
@@ -17,8 +102,7 @@ app.post('/manhwas', (req, res) => {
         res.status(201).json(manhwa);
     })
     .catch(error => {
-        console.error(error);
-        res.status(400).json({ Error: 'Request Failed'})
+
     });
 });
 // GET distinct genre
@@ -94,6 +178,9 @@ app.post('/manhwas/filter', (req, res) => {
             res.send({ Error: 'Request failed'});
         });
 });
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`);

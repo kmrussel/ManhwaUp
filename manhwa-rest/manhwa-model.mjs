@@ -20,24 +20,21 @@ const manhwaSchema = mongoose.Schema({
 }
 );
 
-
-
-// compile model from schema
 const Manhwa = mongoose.model("Manhwa", manhwaSchema)
 
-
-
-// create
+// create manhwa
 const createManhwa = async( title, image, authors, date, manhwaStatus, genres, description) => {
     const manhwa = new Manhwa({ title: title, image: image, authors: authors, date: date, manhwaStatus: manhwaStatus, genres: genres, description: description})
     return manhwa.save()
 }
 
+
 // find manhwa by genre
 const findManhwaByGenre = async (filter) => {
-    const query = Manhwa.find({ genres: filter  }).limit(5);
+    const query = Manhwa.find({ genres: filter }).limit(5);
     return query.exec();
 };
+
 
 // find manhwa
 const findManhwas = async (filter) => {

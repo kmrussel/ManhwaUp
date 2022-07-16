@@ -9,7 +9,10 @@ function Navigation () {
             <Link to = "/" exact> <img src={Logo}/> </Link>
             <Link to = "/" exact> Home </Link> 
             <Link to ="/browse-all"> Browse </Link>
-            <Link to="/information">info page</Link>
+            <Link to="/information">help</Link>
+            <Link to="/register">Register</Link>
+            <Link to="/login">Login</Link>
+            <Link to='/userPage'>user</Link>
             <Search/>
         </nav>
     );
