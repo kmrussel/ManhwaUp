@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import AuthContext from '../context/AuthProvider';
 
 function LoginPage () {
+    const { setAuth } = useContext(AuthContext)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState(false);
@@ -12,17 +14,27 @@ function LoginPage () {
 
     const logUserIn = async () => {
         const user = {"email": `${email}`, "password": `${password}`};
-        const response = await fetch('/login', {
+        const options = {
             method: 'POST',
-            body: JSON.stringify(user),
+            body: JSON.stringify( user),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                withCredentials: true
             }
-        });
+        }
         
+        const response = await fetch('/login', options)
+
         if(response.status === 201) {
+            const data = await response.json()
+            const resEmail = data.email
+            const resPassword = data.password
+            const resToken = data.token
+
             setLogin(true)
+            setAuth({resEmail, resPassword, resToken})
             alert("You have logged in!")
+            
             cookies.set("TOKEN", response.formData.token, {
                 path:"/"
             })
@@ -74,3 +86,4 @@ function LoginPage () {
 }
 
 export default LoginPage; 
+

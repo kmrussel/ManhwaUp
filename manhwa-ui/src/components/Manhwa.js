@@ -13,14 +13,6 @@ function Manhwa({ manhwa, manhwaShown }) {
             
         </div>
 
-
-                    
-
-             
-                    
-                       
-    
-        
         
 
     );

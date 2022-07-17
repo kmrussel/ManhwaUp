@@ -25,16 +25,17 @@ content-type: application/json
 
 {
     "username": "kr",
-    "email": "ee",
-    "password": "12"
+    "email": "eea",
+    "password": "32"
 }
 
 ###
 POST http://localhost:3000/login HTTP/1.1
 content-type: application/json
 
-{"email": "ee",
-"password":"12"}
+{ "email": "a@a",
+"password":"12" }
+
 
 ###
 GET http://localhost:3000/genre HTTP/1.1

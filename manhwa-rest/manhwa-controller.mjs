@@ -4,9 +4,7 @@ import * as users from './user-model.mjs';
 import express, { response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import * as auth from './auth.mjs';
-
-
+ 
 const app = express();
 
 
@@ -29,12 +27,20 @@ app.use((req, res, next) => {
     )
     next(); 
 })
-// authentication endpoint
-app.get('/auth-endpoint', auth.auth, (res, req) =>
-{ console.log('what is ')}
-)
 
+// user.updateToken(user._id, user.username, user.email, user.password, refreshToken)
+// res.cookie('jwt', refreshToken, {httpOnly: true, 
+// sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+
+// res.status(201).send({
+//     message: "Login successful",
+//     username: user.username,
+//     email: user.email,
+//     password: user.password,
+//     refreshToken: refreshToken
+//  })
 // Login 
+
 app.post("/login", (req, res) => {
     users.findUser(req.body.email)
     .then((user) => {

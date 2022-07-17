@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 
 
-export const RegisterPage = () => {
+export const RegisterPage = ({setLogInStatus, setUser}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -11,15 +11,20 @@ export const RegisterPage = () => {
 
     const addUser = async () => {
         const newUser = {username, email, password}
-        const response = await fetch('/register', {
+        const options = {
             method: 'POST',
             body: JSON.stringify(newUser),
             headers: {
                 'Content-Type': 'application/json'
             }
-        });
+        };
+        const response = await fetch('/register', options)
+        const data = await response.json()
+        
         if (response.status === 201) {
             alert("Successfully registered. Welcome to ManhwaUp!")
+            setLogInStatus("Logged_In")
+            setUser(data)
             history.push("/userPage")
         } else {
             alert("Failed to register, please try again.")

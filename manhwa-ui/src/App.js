@@ -13,16 +13,14 @@ import InformationPage from './pages/InformationPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import UserPage from './pages/UserPage';
-import ProtectedRoutes from './components/ProtectedRoutes';
+
 
 function App() {
   const [manhwaToShow, setManhwaToShow] = useState([]);
   const [genreToShow, setGenreToShow] = useState([]);
-  if(window.Prototype) {
-    delete Object.prototype.toJSON;
-    delete Array.prototype.toJSON;
-    delete String.prototype.toJSON;
-}
+  const [logInStatus, setLogInStatus] = useState([]);
+  const [showUser, setUser] = useState([])
+
   return (
     <>
     <div className="App">
@@ -30,34 +28,54 @@ function App() {
         <Navigation/>
         <div className="App-header">
           <Route path="/" exact>
-            <HomePage  setManhwaToShow={setManhwaToShow} setGenreToShow = {setGenreToShow}/>
+            <HomePage  
+            setManhwaToShow={setManhwaToShow} 
+            setGenreToShow = {setGenreToShow}/>
           </Route>
           <Route path="/browse-all">
-            <BrowseAllPage setManhwaToShow={setManhwaToShow} setGenreToShow={setGenreToShow}/></Route>
+            <BrowseAllPage 
+            setManhwaToShow={setManhwaToShow} 
+            setGenreToShow={setGenreToShow}/></Route>
           <Route path ="/manhwa/:manhwa/">
-             <ManhwaPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow}  genreToShow={genreToShow}/>
+             <ManhwaPage 
+             manhwaToShow={manhwaToShow} />
           </Route>
           <Route path="/genre/:genres/" >
-            <GenrePage genreToShow={genreToShow} setManhwaToShow={setManhwaToShow}/>
+            <GenrePage 
+            genreToShow={genreToShow} 
+            setManhwaToShow={setManhwaToShow}/>
           </Route>
           <Route path="/results/:filter/">
-            <ResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow}/>
+            <ResultsPage 
+            manhwaToShow={manhwaToShow} 
+            setManhwaToShow={setManhwaToShow}/>
           </Route>
           <Route path="/search-results/:search">
-            <SearchResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow}/>
+            <SearchResultsPage 
+            manhwaToShow={manhwaToShow} 
+            setManhwaToShow={setManhwaToShow}/>
           </Route>
           <Route path="/information">
             <InformationPage/>
           </Route>
+
+          {/* Login / register*/}
+          
           <Route path="/register">
-            <RegisterPage/>
+            <RegisterPage
+            setLogInStatus = {setLogInStatus}
+            setUser = {setUser}/>
           </Route>
           <Route path="/login">
-            <LoginPage/>
+            <LoginPage
+            setLogInStatus = {setLogInStatus}
+            setUser = {setUser}/>
           </Route>
-          <ProtectedRoutes path="/userPage">
-            <UserPage/>
-          </ProtectedRoutes>
+          <Route path="/userPage">
+            <UserPage
+            logInStatus={logInStatus}
+            showUser ={showUser}/>
+          </Route>
           </div>
       </Router>
     </div>
