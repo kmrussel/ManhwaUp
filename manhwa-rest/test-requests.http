@@ -22,7 +22,32 @@ But it was worth trying to make this my new life."
 
 
 ###
-GET http://localhost:3000/genre HTTP/1.1
+POST http://localhost:3000/new-user HTTP/1.1
+content-type: application/json
+
+{
+    "username": "melky",
+    "email": "c@a",
+    "password": "hii"
+}
+
+###
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "c@a",
+    "password": "hii"
+}
+
+###
+GET http://localhost:3000/refresh HTTP/1.1
+
+###
+GET http://localhost:3000/logout HTTP/1.1
+
+###
+GET http://localhost:3000/genres HTTP/1.1
 
 ###
 GET http://localhost:3000/manhwas HTTP/1.1
