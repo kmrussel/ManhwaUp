@@ -2,7 +2,7 @@ import React from 'react'
 import { useRef, useState, useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
-import Cookies from 'cookies';
+
 
 function LoginPage () {
     const { setAuth } = useAuth();
@@ -47,7 +47,7 @@ function LoginPage () {
             // clear password and email 
             setPassword('');
             setEmail('');
-            history.push('/')
+            history.push(from)
         } else if (response.status === 400) {
             setErrorMessage('Missing email or password');
             errRef.current.focus();

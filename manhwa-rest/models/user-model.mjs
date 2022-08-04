@@ -9,7 +9,6 @@ mongoose.connect(
 
 const db = mongoose.connection;
 
-
 // user schema
 const userSchema = mongoose.Schema({
     username: {type: String},

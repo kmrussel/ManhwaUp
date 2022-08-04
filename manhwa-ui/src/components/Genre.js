@@ -3,7 +3,7 @@ import ManhwaList from './ManhwaList';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {Link} from 'react-router-dom';
-import  { Col, Container, Row } from 'react-bootstrap';
+
 
 function Genre( { genre, setManhwaToShow, genreShown}) {
         const [manhwas, setManhwas] = useState([]);

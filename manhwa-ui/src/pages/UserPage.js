@@ -13,8 +13,6 @@ function UserPage () {
       const controller = new AbortController();
       
       const loadUser = async () => {
-        let isMounted = true; 
-        const controller = new AbortController();
 
         try{
           await axiosPrivate.post('/user',
@@ -42,7 +40,7 @@ function UserPage () {
   return (
     <article>
         <h2>User page</h2>
-        {user.username}
+        
     </article>
   )
 }

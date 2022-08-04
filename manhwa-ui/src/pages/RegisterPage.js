@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRef, useState, useEffect } from 'react';
-import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {Link} from 'react-router-dom';
 
@@ -10,7 +10,6 @@ import {Link} from 'react-router-dom';
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
 
 
 function Register () {
@@ -19,19 +18,16 @@ function Register () {
 
     const [username, setUser] = useState();
     const [validName, setValidName] = useState(false);
-    const [userFocus, setUserFocus] = useState(false);
 
     const [email, setEmail] = useState();
     const [validEmail, setValidEmail] = useState(false);
-    const [emailFocus, setEmailFocus] = useState(false);
+
 
     const [password, setPassword] = useState();
     const [validPassword, setValidPassword] = useState(false);
-    const [passwordFocus, setPasswordFocus]  = useState(false);
 
     const [matchPassword, setMatchPassword] = useState();
     const [validMatch, setValidMatch] = useState(false);
-    const [matchFocus, setMatchFocus] = useState(false);
 
     const [errorMessage, setErrorMessage] = useState();
     const [success, setSuccess] = useState(false);
