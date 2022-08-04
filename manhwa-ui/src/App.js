@@ -10,6 +10,8 @@ import GenrePage from './pages/GenrePage';
 import ResultsPage from './pages/ResultsPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import InformationPage from './pages/InformationPage';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   const [manhwaToShow, setManhwaToShow] = useState([]);
@@ -44,6 +46,12 @@ function App() {
           </Route>
           <Route path="/information">
             <InformationPage/>
+          </Route>
+          <Route path='/register'>
+            <RegisterPage/>
+          </Route>
+          <Route path='/login'>
+            <LoginPage/>
           </Route>
           </div>
       </Router>

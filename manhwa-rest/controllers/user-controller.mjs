@@ -8,7 +8,7 @@ const router = express.Router()
 
 
 // create a new user
-router.post('/new-user', async (req, res) => {
+router.post('/register', async (req, res) => {
     if ( !req.body.email || ! req.body.password ){
         return res.status(400)
         .json({'message': 'Username and password are required'});
@@ -16,7 +16,7 @@ router.post('/new-user', async (req, res) => {
 
     // check for duplicate user ***FIX*** 
     const duplicate = await users.findUser({'email': req.body.email});
-    if (duplicate.length !== 0 ) return res.status(403).json({'message': 'This email is already is use.'}); 
+    if (duplicate.length !== 0 ) return res.status(409).json({'message': 'This email is already is use.'}); 
 
    
     try{
@@ -43,7 +43,7 @@ router.post('/login', async(req, res) => {
     if (foundUser.length === 0 ) return res.sendStatus(403);
  
     // check if passwords match
-    const match = bcrypt.compare(req.body.password, foundUser[0].password);
+    const match = await bcrypt.compare(req.body.password, foundUser[0].password);
     if (match){
 
         // create JWTs 
@@ -64,7 +64,7 @@ router.post('/login', async(req, res) => {
 
         // send cookie and access token 
         res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 *1000});
-        res.json({accessToken});
+        res.status(201).json({accessToken});
     } else {
         res.sendStatus(401); 
     };
