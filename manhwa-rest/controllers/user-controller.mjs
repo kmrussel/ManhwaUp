@@ -48,22 +48,22 @@ router.post('/login', async(req, res) => {
 
         // create JWTs 
         const accessToken = jwt.sign(
-            { "username": foundUser.username },
+            { "email": foundUser.email },
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: 60 * 10 }
         );
 
         const refreshToken = jwt.sign(
-            { "username": foundUser.username },
+            { "email": foundUser.email },
             process.env.REFRESH_TOKEN_SECRET,
             { expiresIn: '1d' }
         );
-        
+         
         // set user's refresh token 
         users.setRefresh(foundUser[0]._id, refreshToken);
 
-        // send cookie and access token 
-        res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 *1000});
+        // send cookie and access token      
+        res.cookie('jwt', refreshToken, { httpOnly: true, secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 *1000});
         res.status(201).json({accessToken});
     } else {
         res.sendStatus(401); 

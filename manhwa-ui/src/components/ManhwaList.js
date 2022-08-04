@@ -8,15 +8,16 @@ import Divider from "@material-ui/core/Divider";
 function ManhwaList({ manhwas, manhwaShown }) {
     return (
         <Grid container spacing ={3}>
-            {manhwas.map(manhwa => (
-                <Grid item xs={2}>
+            {manhwas.map((manhwa, i) => (
+                
+                <Grid item xs={2} key={i}>
                     < div onClick = { () => manhwaShown(manhwa)}> 
                     <Card className="MuiElevatedCard--01">
 
                         <CardContent className={"MuiCardContent-root"}>
                             <Grid container spacing={2}>
                                 <Grid item xs={6} sm={6}>
-                                    <Grid container justify="space-evently">
+                                    <Grid container justifyContent="space-evenly">
                                     <img src= {`${manhwa.image}`} height={250} width={150} ></img>
                                     </Grid>
                                 </Grid>
@@ -36,6 +37,7 @@ function ManhwaList({ manhwas, manhwaShown }) {
                     </Card>
                     </div>
                  </Grid>   
+                 
             ))}
         </Grid>
         

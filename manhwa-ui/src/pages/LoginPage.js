@@ -1,17 +1,22 @@
 import React from 'react'
-import { useRef, useState, useEffect, useContext } from 'react';
-import {Link} from 'react-router-dom';
-import AuthContext from '../context/AuthProvider';
+import { useRef, useState, useEffect } from 'react';
+import { Link, useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import Cookies from 'cookies';
 
 function LoginPage () {
-    const { setAuth } = useContext(AuthContext);
+    const { setAuth } = useAuth();
+
+    const history = useHistory(); 
+    const location = useLocation(); 
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef();
     const errRef = useRef(); 
 
     const [email, setEmail] = useState();
     const [password, setPassword] = useState(); 
     const [errorMessage, setErrorMessage] = useState(false);
-    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         userRef.current.focus();
@@ -27,6 +32,7 @@ function LoginPage () {
         const response = await fetch('/login', {
             method: 'POST',
             body: JSON.stringify(user),
+
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -36,11 +42,12 @@ function LoginPage () {
             const data = await response.json()
 
             const accessToken = data.accessToken;
+            
             setAuth({ email, password, accessToken })
             // clear password and email 
             setPassword('');
             setEmail('');
-            setSuccess(true)
+            history.push('/')
         } else if (response.status === 400) {
             setErrorMessage('Missing email or password');
             errRef.current.focus();
@@ -54,23 +61,12 @@ function LoginPage () {
     }
 
     return (
-    <>
-        {success ? (
-            <section>
-                <h1>You are logged in!</h1>
-                <br/>
-
-                <p> 
-                    <Link to="/">Go to Home</Link>
-                </p>
-            </section>
-        ) : (
     <section>
         {/* error message */}
         <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
         <h1>Sign In</h1>
         <form>
-            <label htmlFor="email">Email</label>
+            <label for="email">Email</label>
             <input 
                 type="text" 
                 id="email"
@@ -83,7 +79,7 @@ function LoginPage () {
 
             <br/>
             
-            <label htmlFor="password">Password</label>
+            <label for="password">Password</label>
             <input
                 type="password"
                 id="password"
@@ -98,7 +94,6 @@ function LoginPage () {
         Dont have an account?
         <Link to="/register">Sign Up</Link>
     </section>
-        )} </>
     )
 }
 

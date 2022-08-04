@@ -27,13 +27,13 @@ router.get('/refresh', async(req, res) => {
         refreshToken, 
         process.env.REFRESH_TOKEN_SECRET,
         (error, decoded) =>{
-            if( error || foundUser.username !== decoded.username)return res.sendStatus(403);
+            if( error || foundUser.email !== decoded.email)return res.sendStatus(403);
 
             // issue a new access token 
             const accessToken = jwt.sign(
-                { 'username': decoded.username },
+                { 'email': decoded.email },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '30s'}
+                { expiresIn: 60 * 10 }
             );
             
             return res.status(201).json({accessToken});

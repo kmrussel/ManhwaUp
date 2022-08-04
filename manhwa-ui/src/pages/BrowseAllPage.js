@@ -49,8 +49,8 @@ function BrowseAllPage( {setManhwaToShow, setGenreToShow }) {
         <body>
             <h2>Explore All</h2>
             <div>
-                <div class= "tooltip">about advanced filter
-                    <span class="tooltiptext">
+                <div className= "tooltip">about advanced filter
+                    <span className="tooltiptext">
                         advanced filter allows you to search for manhwa by genres    
                     </span>
                 </div>
@@ -62,8 +62,8 @@ function BrowseAllPage( {setManhwaToShow, setGenreToShow }) {
 
                 <section {...getCollapseProps()}> 
                 <br></br>
-                <div class="tooltip">how to use
-                            <span class="tooltiptext">
+                <div className="tooltip">how to use
+                            <span className="tooltiptext">
                                 select genre(s) that you wish to view and press go. 
                                 If multiple genres are selected, only manhwas containing
                                 all the selected genres are shown.

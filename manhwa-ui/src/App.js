@@ -12,7 +12,8 @@ import SearchResultsPage from './pages/SearchResultsPage';
 import InformationPage from './pages/InformationPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
-
+import UserPage from './pages/UserPage'
+import RequireAuth from './components/RequireAuth';
 function App() {
   const [manhwaToShow, setManhwaToShow] = useState([]);
   const [genreToShow, setGenreToShow] = useState([]);
@@ -53,6 +54,14 @@ function App() {
           <Route path='/login'>
             <LoginPage/>
           </Route>
+
+          {/* protected routes */}
+          <Route element={<RequireAuth/>}>
+              <Route path="/user-page">
+                  <UserPage/>
+              </Route>
+          </Route>
+          
           </div>
       </Router>
     </div>

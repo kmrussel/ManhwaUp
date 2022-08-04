@@ -115,7 +115,7 @@ function Register () {
         <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
         <h1>Register</h1>
         <form>
-            <label htmlFor="username">
+            <label for="username">
                 Username
             </label>
             <input
@@ -126,9 +126,9 @@ function Register () {
                 onChange={(e) => setUser(e.target.value)}
                 required
             />
-            <div class="tooltip">
+            <div className="tooltip">
                 <FontAwesomeIcon icon={faInfoCircle}/>
-                <span class="tooltiptext">
+                <span className="tooltiptext">
                     Username must be 4 to 24 characters and begin with a letter. <br/>
                     Letters, numbers, underscores, hyphens allowed. 
                 </span>
@@ -136,7 +136,7 @@ function Register () {
 
             <br/>
             
-            <label htmlFor="email">
+            <label for="email">
                 Email
             </label>
             <input 
@@ -149,7 +149,7 @@ function Register () {
 
             <br/>
 
-            <label htmlFor="password">
+            <label for="password">
                 Password
             </label>
             <input
@@ -159,16 +159,16 @@ function Register () {
                 value={password}
                 required
             />
-            <div class="tooltip">
+            <div className="tooltip">
                 <FontAwesomeIcon icon={faInfoCircle}/>
-                <span class="tooltiptext">
+                <span className="tooltiptext">
                     Password must be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character.<br/>
                 </span>
             </div>
             
             <br/>
 
-            <label htmlFor="confirm_password">
+            <label for="confirm_password">
                 Confirm Password
             </label>
             <input

@@ -37,7 +37,7 @@ content-type: application/json
 
 {
     "email": "katiemrussell28@gmail.com",
-    "password": "dsf"
+    "password": "K321741k!"
 }
 
 ###
@@ -47,8 +47,13 @@ GET http://localhost:3000/refresh HTTP/1.1
 GET http://localhost:3000/logout HTTP/1.1
 
 ###
-GET http://localhost:3000/genres HTTP/1.1
+POST http://localhost:3000/user HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTk2MDQzMjYsImV4cCI6MTY1OTYwNDkyNn0.0rz0yUBIWS4i1QhJuJ9VHVAxh3X-qzi2mPXMFSLriyU
 
+{
+    "email": "katiemrussell28@gmail.com"
+}
 ###
 GET http://localhost:3000/manhwas HTTP/1.1
 
