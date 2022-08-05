@@ -1,13 +1,13 @@
 import React from 'react'
 import { useRef, useState, useEffect } from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 
 function LoginPage () {
     const { setAuth } = useAuth();
 
-    const history = useHistory(); 
+    const navigate = useNavigate(); 
     const location = useLocation(); 
     const from = location.state?.from?.pathname || "/";
 
@@ -47,7 +47,7 @@ function LoginPage () {
             // clear password and email 
             setPassword('');
             setEmail('');
-            history.push(from)
+            navigate(from)
         } else if (response.status === 400) {
             setErrorMessage('Missing email or password');
             errRef.current.focus();

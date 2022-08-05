@@ -35,8 +35,8 @@ router.get('/refresh', async(req, res) => {
                 process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: 60 * 10 }
             );
-            
-            return res.status(201).json({accessToken});
+            const email = foundUser.email
+            return res.status(201).json({ email , accessToken});
     });
 });
 

@@ -1,16 +1,15 @@
 import React from 'react';
 import ManhwaList from '../components/ManhwaList';
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import GetGenre from '../components/GetGenre';
 import Filter from '../components/Filter'
-import Genre from '../components/Genre';
 import useCollapse from 'react-collapsed';
 
 
 function BrowseAllPage( {setManhwaToShow, setGenreToShow }) {
     const [manhwas, setManhwas] = useState([]);
-    const history = useHistory(); 
+    const navigate = useNavigate(); 
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse()
     
     const loadManhwas = async () => {
@@ -21,7 +20,7 @@ function BrowseAllPage( {setManhwaToShow, setGenreToShow }) {
 
     const manhwaShown = manhwa => {
         setManhwaToShow(manhwa);
-        history.push(`/manhwa/${manhwa}`);
+        navigate(`/manhwa/${manhwa}`);
     }
 
     useEffect(() => {
@@ -43,7 +42,7 @@ function BrowseAllPage( {setManhwaToShow, setGenreToShow }) {
     }
 
     function goFilter(genresFilter) {
-        history.push(`/results/${genresFilter}` )
+        navigate(`/results/${genresFilter}` )
     }
     return (
         <body>
