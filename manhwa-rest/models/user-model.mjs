@@ -13,7 +13,8 @@ const db = mongoose.connection;
 const userSchema = mongoose.Schema({
     username: {type: String},
     email: {type: String, required: true},
-    password: {type: String, required: true},
+    password: { type: String, required: true },
+    readingList: [String],
     refreshToken: [String]
 });
 
@@ -27,7 +28,7 @@ const createUser = async(username, email, password) => {
 
 // find user by filter
 const findUser = async (filter) =>{
-    const query = User.find(filter);
+    const query = User.findOne(filter);
     return query.exec();
 };
 
@@ -37,4 +38,18 @@ const setRefresh = async(id, token) => {
     return query.exec();
 };
 
-export {createUser, findUser, setRefresh}
+
+// add/remove manhwa from reading list
+const updateList = async (user, filter) => {
+    const query = User.updateOne({_id: user}, filter)
+    return query.exec()
+}
+
+// find manhwa from reading list 
+const findManhwa = async (user, manhwa) => {
+    const query = User.findOne({ _id: user, readingList: { $in : manhwa} });
+    return query.exec()
+}
+
+
+export {createUser, findUser, setRefresh, updateList, findManhwa}

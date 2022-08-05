@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 
-function LoginPage () {
+function LoginPage ({setUserStatus}) {
     const { setAuth } = useAuth();
 
     const navigate = useNavigate(); 
@@ -40,14 +40,14 @@ function LoginPage () {
         
         if(response.status === 201) {
             const data = await response.json()
-
+            const username = data.username
             const accessToken = data.accessToken;
-            
-            setAuth({ email, password, accessToken })
+            setUserStatus('LoggedIn')
+            setAuth({ username, email, password, accessToken })
             // clear password and email 
             setPassword('');
             setEmail('');
-            navigate(from)
+            navigate(from, { replace: true })
         } else if (response.status === 400) {
             setErrorMessage('Missing email or password');
             errRef.current.focus();
@@ -58,6 +58,7 @@ function LoginPage () {
             setErrorMessage('Login Failed')
             errRef.current.focus();
         }
+
     }
 
     return (
@@ -66,7 +67,7 @@ function LoginPage () {
         <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
         <h1>Sign In</h1>
         <form>
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input 
                 type="text" 
                 id="email"
@@ -79,7 +80,7 @@ function LoginPage () {
 
             <br/>
             
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
                 type="password"
                 id="password"

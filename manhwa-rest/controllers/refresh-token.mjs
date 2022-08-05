@@ -20,7 +20,7 @@ router.get('/refresh', async(req, res) => {
 
  
     // user doesn't exist 
-    if (foundUser.length === 0) {return res.status(403).json({'message': 'user does not exist'});}
+    if (!foundUser) {return res.status(403).json({'message': 'user does not exist'});}
     
     // evaluate jwt
     jwt.verify(

@@ -111,7 +111,7 @@ function Register () {
         <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
         <h1>Register</h1>
         <form>
-            <label for="username">
+            <label htmlFor="username">
                 Username
             </label>
             <input
@@ -132,7 +132,7 @@ function Register () {
 
             <br/>
             
-            <label for="email">
+            <label htmlFor="email">
                 Email
             </label>
             <input 
@@ -145,7 +145,7 @@ function Register () {
 
             <br/>
 
-            <label for="password">
+            <label htmlFor="password">
                 Password
             </label>
             <input
@@ -164,7 +164,7 @@ function Register () {
             
             <br/>
 
-            <label for="confirm_password">
+            <label htmlFor="confirm_password">
                 Confirm Password
             </label>
             <input

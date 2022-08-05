@@ -19,18 +19,13 @@ import PersistLogin from './components/PersistLogin';
 function App() {
   const [manhwaToShow, setManhwaToShow] = useState([]);
   const [genreToShow, setGenreToShow] = useState([]);
-
-  //   if(window.Prototype) {
-  //     delete Object.prototype.toJSON;
-  //     delete Array.prototype.toJSON;
-  //     delete String.prototype.toJSON;
-  // }
+  const [userStatus, setUserStatus] = useState([])
 
   return (
     <>
       <BrowserRouter>
         <div className="App">
-          <Navigation />
+          <Navigation userStatus={userStatus} setUserStatus={setUserStatus} />
           <Routes>
 
             {/* public routes */}
@@ -42,12 +37,12 @@ function App() {
             <Route path="/search-results/:search" element={<SearchResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} />} />
             <Route path="/information" element={<InformationPage />} />
             <Route path='/register' element={<RegisterPage />} />
-            <Route path='/login' element={<LoginPage />} />
+            <Route path='/login' element={<LoginPage setUserStatus={setUserStatus} />} />
 
             {/* protected routes */}
             <Route element={<PersistLogin />}>
               <Route element={<RequireAuth />}>
-                <Route path="/user-page" element={<UserPage />} />
+                <Route path="/user-page" element={<UserPage setManhwaToShow={setManhwaToShow} />} />
               </Route>
             </Route>
 

@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-
+import React, { useState } from 'react'
+import Image from '../components/Image'
+import Description from '../components/Description'
 
 export const ManhwaPage = ( { manhwaToShow } ) => {
     const [title] = useState (manhwaToShow.title);
-    const [image] = useState (manhwaToShow.image);
     const [authors] = useState(manhwaToShow.authors);
     const [date] = useState(manhwaToShow.date);
     const [genres] = useState(manhwaToShow.genres);
-    const [description] = useState(manhwaToShow.description);
+    const [url] = useState (manhwaToShow.url);
 
 
     return(
         <div>
             
-            {/* <img src= {require( `../manhwaImages/${image}`).default} height={250} width={150} ></img> */}
-            
+           <Image url={url}/>
+            <Description url={url}/>
             <h2>{title}</h2>
             <ul>
                 <li>Author(s): {authors}</li>
                 <li>Released: {date}</li>
                 <li>{genres}</li>
-                <li>Summary: {description}</li>
+                <li>Summary: </li>
             </ul>
         </div>
     )

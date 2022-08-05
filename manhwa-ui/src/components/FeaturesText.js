@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function FeaturesText () {
-    return ( 
+function FeaturesText() {
+    return (
         <ul>
             <li>Click on a manhwa to view it</li>
             <li><Link to="/browse-all">Browse All:</Link> Search for a manhwa to read</li>

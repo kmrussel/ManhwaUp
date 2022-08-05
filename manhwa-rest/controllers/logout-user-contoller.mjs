@@ -18,13 +18,13 @@ router.get('/logout', async (req, res) => {
 
  
     // user does not exist
-    if (foundUser.length === 0) {
+    if (!foundUser) {
         res.clearCookie('jwt', { httpOnly: true, secure: true, sameSite: 'None',});
-        return res.sendStatus(204);
+        return res.sendStatus(206);
     };
 
     // delete refresh token from user  
-    users.setRefresh(foundUser[0]._id, []);
+    users.setRefresh(foundUser._id, []);
     
     res.clearCookie('jwt', { httpOnly: true, secure: true, sameSite: 'None',});
     res.sendStatus(204);

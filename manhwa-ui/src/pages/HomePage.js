@@ -1,10 +1,13 @@
 import React from 'react';
 import Genre from '../components/Genre';
 import FeaturesText from '../components/FeaturesText';
-
+import useAuth from '../hooks/useAuth';
 
 function HomePage( {setManhwaToShow, setGenreToShow }) {
     const genreHome = ["Fantasy", "Romance", "Action", "Drama"]
+    const { auth } = useAuth(); 
+
+    console.log(auth.email)
     return (
         <>
   

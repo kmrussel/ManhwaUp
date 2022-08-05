@@ -6,7 +6,7 @@ const router = express.Router()
 
 // create a manhwa 
 router.post('/manhwas', (req, res) => {
-    manhwas.createManhwa(req.body.title, req.body.image, req.body.authors, req.body.date, req.body.manhwaStatus, req.body.genres, req.body.description)
+    manhwas.createManhwa(req.body.title, req.body.authors, req.body.date, req.body.manhwaStatus, req.body.genres, req.body.url)
     .then(manhwa => {
         res.status(201).json(manhwa);
     })
@@ -15,6 +15,7 @@ router.post('/manhwas', (req, res) => {
         res.status(400).json({ Error: 'Request Failed'});
     });
 });
+
 
 // get disctinct genres
 router.get('/genres', (req, res) => {
@@ -43,6 +44,18 @@ router.get('/manhwas', (req, res) => {
             res.send({ Error: 'Request failed'});
         });
 });
+
+// get one manhwa by ID 
+router.post('/one-manhwa', ( req, res ) => {
+    manhwas.findManhwas({ _id: req.body._id })
+        .then(manhwa => {
+            res.send(manhwa[0]);
+        })
+        .catch(error => {
+            console.error(error);
+            res.send({ Error: 'Request failed' });
+        })
+})
 
 // search for a manhwa 
 router.post('/search', (req,res) => {

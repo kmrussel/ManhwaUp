@@ -30,7 +30,7 @@ function SearchResultsPage ({setManhwaToShow}) {
 
     useEffect(() => {
         searchManhwas()
-    }, [])
+    }, [search])
 
     return(
         
