@@ -10,9 +10,9 @@ const useRefreshToken = () => {
         });
         const data = await response.json()
         const accessToken = data.accessToken;
-        console.log(auth.email)
+        const email = data.email;
         setAuth(prev => {
-            return { ...prev, accessToken: accessToken}
+            return { ...prev, email: email, accessToken: accessToken}
         });
         return accessToken
     }

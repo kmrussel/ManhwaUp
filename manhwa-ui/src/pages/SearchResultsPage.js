@@ -1,12 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import ManhwaList from '../components/ManhwaList';
 
 function SearchResultsPage ({setManhwaToShow}) {
     const [manhwas, setManhwas] = useState([]);
-    const history = useHistory(); 
+    const navigate = useNavigate(); 
 
     const {search} = useParams(); 
     const searchManhwas = async () => {
@@ -25,7 +25,7 @@ function SearchResultsPage ({setManhwaToShow}) {
 
     const manhwaShown = manhwa => {
         setManhwaToShow(manhwa);
-        history.push(`/manhwa/${manhwa}`)
+        navigate(`/manhwa/${manhwa}`)
     }
 
     useEffect(() => {

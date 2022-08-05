@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function GetGenre({setGenreToShow, setManhwaToShow, Component}) {
     const [genres, setGenres] = useState([]);
-    const history = useHistory(); 
+    const navigate = useNavigate(); 
 
     const loadGenres = async () => {
         const response = await fetch('/genres')
@@ -14,7 +14,7 @@ function GetGenre({setGenreToShow, setManhwaToShow, Component}) {
 
     const genreShown = genre => {
         setGenreToShow(genre);
-        history.push('/genre');
+        navigate('/genre');
     }
 
     useEffect(() => {

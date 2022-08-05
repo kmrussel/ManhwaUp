@@ -1,14 +1,14 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function Search() {
-    const history = useHistory(); 
+    const navigate = useNavigate(); 
 
     const getSearch = async (e) => {
         e.preventDefault(); 
         const search = document.getElementById('header-search').value;
         document.getElementById("search-form").reset();
-        history.push(`/search-results/${search}`)
+        navigate(`/search-results/${search}`)
     }
 
     return (

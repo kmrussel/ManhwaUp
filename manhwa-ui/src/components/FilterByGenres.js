@@ -1,12 +1,12 @@
 import React from 'react';
 import ManhwaList from './ManhwaList';
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function FilterByGenres( { genre, setManhwaToShow, genreShown}) {
     const [manhwas, setManhwas] = useState([]);
-    const history = useHistory(); 
+    const navigate = useNavigate(); 
 
     const loadManhwas = async () => {
         const params = {"genres": `${genre}`};
@@ -24,7 +24,7 @@ function FilterByGenres( { genre, setManhwaToShow, genreShown}) {
 
     const manhwaShown = manhwa => {
         setManhwaToShow(manhwa);
-        history.push(`/manhwa/${manhwa}`);
+        navigate(`/manhwa/${manhwa}`);
     }
 
     useEffect(() => {
