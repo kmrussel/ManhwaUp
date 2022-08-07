@@ -9,21 +9,22 @@ export const ManhwaPage = ({ manhwaToShow, userStatus }) => {
     const [authors] = useState(manhwaToShow.authors);
     const [date] = useState(manhwaToShow.date);
     const [genres] = useState(manhwaToShow.genres);
+    const [manhwaStatus] = useState(manhwaToShow.manhwaStatus)
     const [url] = useState(manhwaToShow.url);
 
 
     return (
         <div>
 
-            <Image url={url} />
+            <Image url={url} height={300} width={210} />
+            <section>
+                <h2>{title}</h2>
+                <p>Author(s): {authors.join(", ")}</p>
+                <p>Released {date} • {manhwaStatus}</p>
+                <p>Genres: {genres.join(", ")}</p>
             <Description url={url} />
-            <h2>{title}</h2>
-            <ul>
-                <li>Author(s): {authors}</li>
-                <li>Released: {date}</li>
-                <li>{genres}</li>
-                <li>Summary: </li>
-            </ul>
+            </section>
+            
             <ReadingListButton userStatus={userStatus} id={id} buttonmsg={'Add to reading list'} />
         </div>
     )

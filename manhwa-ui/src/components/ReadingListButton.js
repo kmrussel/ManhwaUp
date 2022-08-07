@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ReadingListButton = ({ userStatus, id, buttonmsg }) => {
     const axiosPrivate = useAxiosPrivate();
@@ -82,7 +85,7 @@ const ReadingListButton = ({ userStatus, id, buttonmsg }) => {
                     </>
 
             }
-            <p ref={msgRef} className={message ? "message" : "offscreen"}>{message}</p>
+            <p ref={msgRef} className={message ? "message" : "offscreen"}><FontAwesomeIcon icon={faExclamation} />{message}</p>
         </div>
     )
 }

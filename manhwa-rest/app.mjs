@@ -1,7 +1,6 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import 'dotenv/config';
-import corsOptions from './config/corsOptions.js';
 import cors from 'cors';
 import manhwaRoutes from './controllers/manhwa-controller.mjs'
 import userRoutes from './controllers/user-controller.mjs'
@@ -36,7 +35,6 @@ app.use('/', readingListRoute);
 // all routes after this will use verifyJWT middleware
 app.use(verifyJWT);
 app.use('/', userInfoRoute);
-
 
 
 app.listen(PORT, () => {

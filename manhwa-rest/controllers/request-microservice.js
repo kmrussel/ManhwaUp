@@ -4,13 +4,21 @@ const amqplib = require('amqplib');
 const { v4: uuidvv4 } = require('uuid')
 const router = express.Router()
 
+
+// Citation for the following function
+// Date: 08.07.22
+// Altered from:
+// https://www.rabbitmq.com/tutorials/tutorial-six-javascript.html
+
 router.post('/get-data', async (req, res) => {
 
     const uuid = uuidvv4();
     const url = req.body.url
+    
     if (!url) {
         res.sendStatus(400)
     }
+
     const scrapeURL = async (url) => {
         const connection = await amqplib.connect('amqp://localhost');
         const channel = await connection.createChannel();
@@ -27,13 +35,14 @@ router.post('/get-data', async (req, res) => {
 
         //consume data from q
         channel.consume(q.queue, msg => {
+
             //check that correlationId of data matches uuid
             try {
                 if (msg.properties.correlationId == uuid) {
                     connection.close();
                     const message = msg.content.toString()
                     if (message !== 'error') {
-                        res.status(201).json(JSON.parse(message)[0])
+                        res.status(201).json(JSON.parse(message)[0]);
                     } else {
                         res.status(404).json({error: 'invalid url'})
                     }

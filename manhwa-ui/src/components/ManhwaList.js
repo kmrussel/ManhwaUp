@@ -20,7 +20,7 @@ function ManhwaList({ manhwas, manhwaShown }) {
                                 <Grid container spacing={2}>
                                     <Grid item xs={6} sm={6}>
                                         <Grid container justifyContent="space-evenly">
-                                        <Image url={manhwa.url} height={250} width={150} />
+                                        <Image url={manhwa.url} height={250} width={175} />
                                         </Grid>
                                     </Grid>
                                     <Divider light />

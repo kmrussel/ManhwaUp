@@ -31,15 +31,21 @@ router.post('/register', async (req, res) => {
     }
 })
 
+// Citation for the following function
+// Date: 08.07.22
+// Altered from:
+// https://github.com/gitdagray/mongo_async_crud/blob/main/controllers/authController.js
+// Author: Dave Gray
+
 // log user in 
 router.post('/login', async(req, res) => {
     if ( !req.body.email || !req.body.password) {
         return res.status(400)
         .json({'message' : 'Username and password are required.'})
-    };
+    }
     
     // find user based on email 
-    const foundUser = await users.findUser({'email': req.body.email})
+    const foundUser = await users.findUser({ 'email': req.body.email });
     if (!foundUser) return res.sendStatus(403);
  
     // check if passwords match
