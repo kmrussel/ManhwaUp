@@ -83,7 +83,7 @@ POST http://localhost:3000/reading-list/add HTTP/1.1
 content-type: application/json
 
 {
-    "user": "62ecf4c91f17b01d00e32de1",
+    "user": "katiemrussell28@gmail.com",
     "manhwa": "62eccb9468055a4b0d4d07c0"
 }
 
@@ -92,7 +92,7 @@ POST http://localhost:3000/reading-list/remove HTTP/1.1
 content-type: application/json
 
 {
-    "user": "62ecf4c91f17b01d00e32de1",
+    "user": "katiemrussell28@gmail.com",
     "manhwa": "62eccb9468055a4b0d4d07c0"
 }
 
@@ -106,24 +106,22 @@ content-type: application/json
 
 
 ###
-POST http://localhost:3000/movies HTTP/1.1
+POST http://localhost:3000/check-list HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthdGllbXJ1c3NlbGwyOEBnbWFpbC5jb20iLCJpYXQiOjE2NTk4NTE2NDQsImV4cCI6MTY1OTg1MjI0NH0.g-nW4ljB4j27RjoBFWDSkBlJ59VjaEImC00LzIHsfU8
 
 {
-    "title": "No Country For Old Men",
-    "year": 2007,
-    "language": "English"
+    "email" : "katiemrussell28@gmail.com",
+    "manhwa" : "62eccb9468055a4b0d4d07c0"
 }
 
 
 ###
-POST http://localhost:3000/movies HTTP/1.1
+POST http://localhost:3000/reading-list HTTP/1.1
 content-type: application/json
 
 {
-    "title": "A Serious Man",
-    "year": 2009,
-    "language": "English"
+    "email" : "katiemrussell28@gmail.com"
 }
 
 

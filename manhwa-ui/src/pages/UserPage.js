@@ -4,7 +4,7 @@ import useAuth from '../hooks/useAuth';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 import User from '../components/User';
 
-function UserPage({ setManhwaToShow }) {
+function UserPage({ setManhwaToShow, userStatus }) {
   const [user, setUser] = useState();
   const axiosPrivate = useAxiosPrivate();
   const { auth } = useAuth();
@@ -37,20 +37,17 @@ function UserPage({ setManhwaToShow }) {
 
   }, [])
 
-  if (user) {
+
     return (
       <article>
         <h2>User page</h2>
-        <User user={user} setManhwaToShow={setManhwaToShow} />
+        {
+          user ? <User user={user} setManhwaToShow={setManhwaToShow} userStatus={userStatus} /> : <p></p>
 
+        }
       </article>
     )
-  } else {
-    return (
-      <div>
-      </div>
-    )
-  }
+
 
 }
 

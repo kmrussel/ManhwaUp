@@ -14,9 +14,9 @@ router.post('/register', async (req, res) => {
         .json({'message': 'Username and password are required'});
     };
 
-    // check for duplicate user ***FIX*** 
+    // check for duplicate user
     const duplicate = await users.findUser({'email': req.body.email});
-    if (duplicate) return res.status(409).json({'message': 'This email is already is use.'}); 
+    if (duplicate) return res.status(409).json({'duplicate': 'This email is already is use.'}); 
 
    
     try{

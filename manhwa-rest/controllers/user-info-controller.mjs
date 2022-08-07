@@ -24,7 +24,7 @@ router.post('/user', async (req, res) => {
 router.post('/reading-list', async (req, res) => {
 
     const foundUser = await users.findUser({ 'email': req.body.email })
-    const readingList = foundUser.readingList 
+    const readingList = foundUser.readingList
     if (foundUser) {
         res.status(201).json(readingList)
     } else if (!foundUser) {
@@ -34,4 +34,23 @@ router.post('/reading-list', async (req, res) => {
     }
 
 })
+
+// check if manhwa is in reading list 
+router.post('/check-list', async (req, res) => {
+
+    const foundUser = await users.findUser({ 'email': req.body.email })
+    const userID = foundUser._id
+    users.findManhwa(userID, req.body.manhwa)
+        .then(result => {
+            res.status(201).json(result)
+        })
+        .catch(error => {
+            console.log(error);
+            res.sendStatus(404)
+        })
+            
+})    
+
+
+
 export default router

@@ -31,7 +31,7 @@ function App() {
             {/* public routes */}
             <Route path="/" exact element={<HomePage setManhwaToShow={setManhwaToShow} setGenreToShow={setGenreToShow} />} />
             <Route path="/browse-all" element={<BrowseAllPage setManhwaToShow={setManhwaToShow} setGenreToShow={setGenreToShow} />} />
-            <Route path="/manhwa/:manhwa/" element={<ManhwaPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} genreToShow={genreToShow} />} />
+            <Route path="/manhwa/:manhwa/" element={<ManhwaPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} genreToShow={genreToShow} userStatus={userStatus} />} />
             <Route path="/genre/:genres/" element={<GenrePage genreToShow={genreToShow} setManhwaToShow={setManhwaToShow} />} />
             <Route path="/results/:filter/" element={<ResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} />} />
             <Route path="/search-results/:search" element={<SearchResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} />} />
@@ -42,7 +42,7 @@ function App() {
             {/* protected routes */}
             <Route element={<PersistLogin />}>
               <Route element={<RequireAuth />}>
-                <Route path="/user-page" element={<UserPage setManhwaToShow={setManhwaToShow} />} />
+                <Route path="/user-page" element={<UserPage setManhwaToShow={setManhwaToShow} userStatus={userStatus} />} />
               </Route>
             </Route>
 
