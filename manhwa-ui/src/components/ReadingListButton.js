@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import useAuth from '../hooks/useAuth'
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
-import { faExclamation } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const ReadingListButton = ({ userStatus, id, buttonmsg }) => {
     const axiosPrivate = useAxiosPrivate();

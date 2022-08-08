@@ -92,8 +92,6 @@ function Register() {
             errRef.current.focus();
 
         }
-
-
     }
 
 
@@ -105,16 +103,13 @@ function Register() {
                 <Link to="/login">Sign In</Link>
             </section> : <>
                 <section className="user-info">
-                    {/* error message */}
-                    <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
-
                     <h1>Register</h1>
                     <form className="user-enter">
                         <div>
                             <label htmlFor="username">
                                 Username
                                 {username ?
-                                        validName ? <FontAwesomeIcon icon={faCheck} className="check"/> : <FontAwesomeIcon icon={faTimes} className="x-mark"/>
+                                    validName ? <FontAwesomeIcon icon={faCheck} className="check" /> : <FontAwesomeIcon icon={faTimes} className="x-mark" />
                                     : ''}
                             </label>
                             <input
@@ -129,13 +124,10 @@ function Register() {
                                 Letters, numbers, underscores, hyphens allowed.
                             </section>
                         </div>
-
-
-
                         <div className="user-input">
                             <label htmlFor="email">
                                 Email
-                                {email ? validEmail ? <FontAwesomeIcon icon={faCheck} className="check"/> : <FontAwesomeIcon icon={faTimes} className="x-mark"/> : ''}
+                                {email ? validEmail ? <FontAwesomeIcon icon={faCheck} className="check" /> : <FontAwesomeIcon icon={faTimes} className="x-mark" /> : ''}
                             </label>
                             <input
                                 type="email"
@@ -145,11 +137,10 @@ function Register() {
                                 required
                             />
                         </div>
-
                         <div className="register-input">
                             <label htmlFor="password">
                                 Password
-                                {password ? validPassword ? <FontAwesomeIcon icon={faCheck} className="check"/> : <FontAwesomeIcon icon={faTimes} className="x-mark"/> : ''}
+                                {password ? validPassword ? <FontAwesomeIcon icon={faCheck} className="check" /> : <FontAwesomeIcon icon={faTimes} className="x-mark" /> : ''}
                             </label>
                             <input
                                 type="password"
@@ -162,14 +153,10 @@ function Register() {
                                 Password must be 8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character.
                             </section>
                         </div>
-
-
-
-
                         <div>
                             <label htmlFor="confirm_password">
                                 Confirm Password
-                                {matchPassword ? validMatch ? <FontAwesomeIcon icon={faCheck} className="check"/> : <FontAwesomeIcon icon={faTimes} className="x-mark"/> : ''}
+                                {matchPassword ? validMatch ? <FontAwesomeIcon icon={faCheck} className="check" /> : <FontAwesomeIcon icon={faTimes} className="x-mark" /> : ''}
                             </label>
                             <input
                                 type="password"
@@ -178,24 +165,22 @@ function Register() {
                                 required
                             />
                         </div>
-
-
                         <button onClick={handleSubmit}>Sign Up</button>
                         <br></br>
                     </form>
+                    {/* error message */}
+                    <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
+
                     <section className="info-bottom">
                         Already have an account?
                         <br />
                         <Link to="/login">Sign In</Link>
                     </section>
-
-
                 </section>
 
-            </>
-            )}
+            </>)}
         </div>
     )
-}
+};
 
 export default Register
