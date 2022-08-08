@@ -114,7 +114,7 @@ function Register() {
                             <label htmlFor="username">
                                 Username
                                 {username ?
-                                    validName ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faTimes} />
+                                        validName ? <FontAwesomeIcon icon={faCheck} className="check"/> : <FontAwesomeIcon icon={faTimes} className="x-mark"/>
                                     : ''}
                             </label>
                             <input
@@ -135,7 +135,7 @@ function Register() {
                         <div className="user-input">
                             <label htmlFor="email">
                                 Email
-                                {email ? validEmail ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faTimes} /> : ''}
+                                {email ? validEmail ? <FontAwesomeIcon icon={faCheck} className="check"/> : <FontAwesomeIcon icon={faTimes} className="x-mark"/> : ''}
                             </label>
                             <input
                                 type="email"
@@ -149,7 +149,7 @@ function Register() {
                         <div className="register-input">
                             <label htmlFor="password">
                                 Password
-                                {password ? validPassword ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faTimes} /> : ''}
+                                {password ? validPassword ? <FontAwesomeIcon icon={faCheck} className="check"/> : <FontAwesomeIcon icon={faTimes} className="x-mark"/> : ''}
                             </label>
                             <input
                                 type="password"
@@ -169,7 +169,7 @@ function Register() {
                         <div>
                             <label htmlFor="confirm_password">
                                 Confirm Password
-                                {matchPassword ? validMatch ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faTimes} /> : ''}
+                                {matchPassword ? validMatch ? <FontAwesomeIcon icon={faCheck} className="check"/> : <FontAwesomeIcon icon={faTimes} className="x-mark"/> : ''}
                             </label>
                             <input
                                 type="password"

@@ -189,7 +189,15 @@ tr, td{
   border-style:solid;
 }
 
+.check {
+  color: green;
+  padding: 0 15px; 
+}
 
+.x-mark {
+  color: red;
+  padding: 0 15px;
+}
 
 .App-logo {
   height: 40vmin;
