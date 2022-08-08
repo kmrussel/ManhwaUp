@@ -42,6 +42,11 @@ p{
   color: white;
 }
 
+.errorMessage {
+  background-color:rgb(236, 236, 236);
+  border-radius: 4px;
+}
+
 .message {
   background-color:rgb(236, 236, 236);
   border-radius: 4px;
@@ -187,6 +192,7 @@ tr, td{
   color:#3B343D;
   border-width: 0 0 3px 0;
   border-style:solid;
+  padding: 10px 20px; 
 }
 
 .check {

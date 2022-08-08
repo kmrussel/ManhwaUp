@@ -66,9 +66,6 @@ function LoginPage({ setUserStatus }) {
 
     return (
         <section className="user-info">
-            {/* error message */}
-            <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
-
             <h1>Sign In</h1>
             <form className="user-enter">
                 <label htmlFor="email">Email</label>
@@ -98,8 +95,12 @@ function LoginPage({ setUserStatus }) {
                 <br></br>
                 <button onClick={handleSubmit}>Sign In</button>
             </form>
+            {/* error message */}
+            <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
+
             <section className="info-bottom">
                 Dont have an account?
+                <br/>
                 <Link to="/register">Sign Up</Link>
             </section>
 
