@@ -3,32 +3,24 @@ POST http://localhost:3000/manhwas HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Trash of the Counts Family",
-    "image": "Trash-of-the-Counts-Family.jpg",
-    "authors": ["Elegant Yoo Ryeo Han"],
+    "title": "It Was a Mistake, Grand Duke!",
+    "authors": ["joypyonn", "Sisse" ],
     "date": 2019,
     "manhwaStatus": "Ongoing",
-    "genres": ["Action", "Adventure", "Comedy", "Fantasy" ],
-    "description": "When I opened my eyes, I was inside a novel.
-[The Birth of a Hero].
-[The Birth of a Hero] was a novel focused on the adventures of the main character, Choi Han, a high school boy who was transported to a different dimension from Earth, along with the birth of the numerous heroes of the continent.
-I became a part of that novel as the tr*sh of the Counts family, the family that oversaw the territory where the first village that Choi Han visits is located.
-The problem is that Choi Han becomes twisted after that village, and everyone in it, are destroyed by assassins.
-The bigger problem is the fact that this s*upid tr*sh who Ive become doesnt know about what happened in the village and messes with Choi Han, only to get beaten to a pulp.
-...This is going to be a problem.
-I feel like something serious has happened to me.
-But it was worth trying to make this my new life."
+    "genres": ["Romance", "Fantasy"],
+    "url": "https://www.tappytoon.com/en/comics/it-was-a-mistake-grand-duke"
+
 }
 
 
 ###
-POST http://localhost:3000/new-user HTTP/1.1
+POST http://localhost:3000/register HTTP/1.1
 content-type: application/json
 
 {
-    "username": "melky",
-    "email": "c@a",
-    "password": "hii"
+    "username": "melkdy",
+    "email": "c@asdf",
+    "password": "hiii"
 }
 
 ###
@@ -49,21 +41,34 @@ GET http://localhost:3000/logout HTTP/1.1
 ###
 POST http://localhost:3000/user HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTk2MDQzMjYsImV4cCI6MTY1OTYwNDkyNn0.0rz0yUBIWS4i1QhJuJ9VHVAxh3X-qzi2mPXMFSLriyU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthdGllbXJ1c3NlbGwyOEBnbWFpbC5jb20iLCJpYXQiOjE2NTk2NjQ3NTksImV4cCI6MTY1OTY2NTM1OX0.iN1GLItxydtjjw35JsVmmnOTM21uBbFeaRTsUtU1mZA
 
 {
     "email": "katiemrussell28@gmail.com"
 }
-###
-GET http://localhost:3000/manhwas HTTP/1.1
 
 ###
+POST http://localhost:3000/get-data HTTP/1.1
+content-type: application/json
 
-POST http://localhost:3000/manhwas/filter HTTP/1.1
+{
+    "url": "https://www.tappytoon.com/en/comics/i-adopted-the-male-lead"
+}
+
+###
+POST http://localhost:3000/one-manhwa HTTP/1.1
+content-type: application/json
+
+{
+    "_id": "62eccb9468055a4b0d4d07c0"
+}
+###
+
+POST http://localhost:3000/manhwas/genres HTTP/1.1
 content-type: application/json
 
 
-    {"genres": ["Fantasy","Romance"]}
+    {"genres": "Romance", "limit": 5}
 
 
 ###
@@ -74,23 +79,21 @@ content-type: application/json
 
 
 ###
-POST http://localhost:3000/movies HTTP/1.1
+POST http://localhost:3000/reading-list/add HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Eternal Sunshine Of The Spotless Mind",
-    "year": 2004,
-    "language": "English"
+    "user": "katiemrussell28@gmail.com",
+    "manhwa": "62eccb9468055a4b0d4d07c0"
 }
 
 ###
-POST http://localhost:3000/movies HTTP/1.1
+POST http://localhost:3000/reading-list/remove HTTP/1.1
 content-type: application/json
 
 {
-    "title": "High Fidelity",
-    "year": 2000,
-    "language": "English"
+    "user": "katiemrussell28@gmail.com",
+    "manhwa": "62eccb9468055a4b0d4d07c0"
 }
 
 ###
@@ -103,24 +106,22 @@ content-type: application/json
 
 
 ###
-POST http://localhost:3000/movies HTTP/1.1
+POST http://localhost:3000/check-list HTTP/1.1
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImthdGllbXJ1c3NlbGwyOEBnbWFpbC5jb20iLCJpYXQiOjE2NTk4NTE2NDQsImV4cCI6MTY1OTg1MjI0NH0.g-nW4ljB4j27RjoBFWDSkBlJ59VjaEImC00LzIHsfU8
 
 {
-    "title": "No Country For Old Men",
-    "year": 2007,
-    "language": "English"
+    "email" : "katiemrussell28@gmail.com",
+    "manhwa" : "62eccb9468055a4b0d4d07c0"
 }
 
 
 ###
-POST http://localhost:3000/movies HTTP/1.1
+POST http://localhost:3000/reading-list HTTP/1.1
 content-type: application/json
 
 {
-    "title": "A Serious Man",
-    "year": 2009,
-    "language": "English"
+    "email" : "katiemrussell28@gmail.com"
 }
 
 

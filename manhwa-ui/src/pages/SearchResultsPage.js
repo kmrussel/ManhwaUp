@@ -4,13 +4,15 @@ import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import ManhwaList from '../components/ManhwaList';
 
-function SearchResultsPage ({setManhwaToShow}) {
+function SearchResultsPage({ setManhwaToShow }) {
     const [manhwas, setManhwas] = useState([]);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
-    const {search} = useParams(); 
+    const { search } = useParams();
+
+    // get manhwas based on search input 
     const searchManhwas = async () => {
-        const params = {"title" : `${search}`};
+        const params = { "title": `${search}` };
         const options = {
             method: 'POST',
             body: JSON.stringify(params),
@@ -18,27 +20,28 @@ function SearchResultsPage ({setManhwaToShow}) {
                 'Content-Type': 'application/json'
             }
         };
-        const response = await fetch ('/search', options)
-        const data = await response.json()
+        const response = await fetch('/search', options)
+        const data = await response.json();
         setManhwas(data);
-    }
+    };
 
     const manhwaShown = manhwa => {
         setManhwaToShow(manhwa);
-        navigate(`/manhwa/${manhwa}`)
-    }
+        navigate(`/manhwa/${manhwa}`);
+    };
 
+    // load manhwas each time search input is changed 
     useEffect(() => {
-        searchManhwas()
-    }, [])
+        searchManhwas();
+    }, [search]);
 
-    return(
-        
+    return (
+
         <>
-        <p>Results for {search}</p>
-        <i>Not what you wanted?</i>
-        <Link to= {`/browse-all`}>Go back to browse all</Link>
-        <ManhwaList manhwas={manhwas} manhwaShown = {manhwaShown} ></ManhwaList>
+            <p>Results for {search}</p>
+            <i>Not what you wanted?</i>
+            <Link to={`/browse-all`}>Go back to browse all</Link>
+            <ManhwaList manhwas={manhwas} manhwaShown={manhwaShown} ></ManhwaList>
         </>
     )
 }

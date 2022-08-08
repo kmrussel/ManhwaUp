@@ -5,29 +5,34 @@ import 'dotenv/config';
 
 const router = express.Router()
 
+// Citation for the following function
+// Date: 08.07.22
+// Altered from:
+// https://github.com/gitdagray/mongo_async_crud/blob/main/controllers/refreshTokenController.js
+// Author: Dave Gray
 
 // generate a new refresh token 
-router.get('/refresh', async(req, res) => {
+router.get('/refresh', async (req, res) => {
+
+    // get cookies
     const cookies = req.cookies;
     if (!cookies?.jwt) {
         return res.sendStatus(401);
-    };
+    }
+
     const refreshToken = cookies.jwt;
 
+    const foundUser = await users.findUser({ 'refreshToken': refreshToken });
+    if (!foundUser) {
+        return res.status(403).json({ 'message': 'user does not exist' });
+    }
 
-    // find user by refresh token
-    const foundUser = await users.findUser({'refreshToken': refreshToken});
-
- 
-    // user doesn't exist 
-    if (foundUser.length === 0) {return res.status(403).json({'message': 'user does not exist'});}
-    
     // evaluate jwt
     jwt.verify(
-        refreshToken, 
+        refreshToken,
         process.env.REFRESH_TOKEN_SECRET,
-        (error, decoded) =>{
-            if( error || foundUser.email !== decoded.email)return res.sendStatus(403);
+        (error, decoded) => {
+            if (error || foundUser.email !== decoded.email) return res.sendStatus(403);
 
             // issue a new access token 
             const accessToken = jwt.sign(
@@ -36,8 +41,8 @@ router.get('/refresh', async(req, res) => {
                 { expiresIn: 60 * 10 }
             );
             const email = foundUser.email
-            return res.status(201).json({ email , accessToken});
-    });
+            return res.status(201).json({ email, accessToken });
+        });
 });
 
 export default router; 

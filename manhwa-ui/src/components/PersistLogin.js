@@ -3,37 +3,40 @@ import { useState, useEffect } from 'react';
 import useRefreshToken from '../hooks/useRefreshToken';
 import useAuth from '../hooks/useAuth';
 
+// Citation for the following function
+// Date: 08.07.22
+// Altered from:
+// https://github.com/gitdagray/react_persist_login/blob/main/src/components/PersistLogin.js
+// Author: Dave Gray
+
 const PersistLogin = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const refresh = useRefreshToken;
-    const { auth } = useAuth(); 
+    const refresh = useRefreshToken();
+    const { auth } = useAuth();
 
     useEffect(() => {
+
         const verifyRefreshToken = async () => {
-            try{
+            try {
                 await refresh();
-            } catch (error){
+            } catch (error) {
                 console.error(error);
             } finally {
                 setIsLoading(false);
             }
-        }
+        };
 
         !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false);
 
     }, []);
 
-    useEffect(() => {
-        console.log(`isLoading: ${isLoading}`)
-        console.log(`aT: ${JSON.stringify(auth?.accessToken)}`)
-    }, [isLoading])
-
-    return(
+    return (
         <>
             {isLoading
-                ? <p>Loading ...</p>
-                : <Outlet/>
+                ? <p>Loading...</p>
+                : <Outlet />
             }
+
         </>
     )
 }

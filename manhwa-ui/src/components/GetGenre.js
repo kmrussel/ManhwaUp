@@ -6,6 +6,7 @@ function GetGenre({setGenreToShow, setManhwaToShow, Component}) {
     const [genres, setGenres] = useState([]);
     const navigate = useNavigate(); 
 
+    // fetch all distinct genres 
     const loadGenres = async () => {
         const response = await fetch('/genres')
         const data = await response.json()

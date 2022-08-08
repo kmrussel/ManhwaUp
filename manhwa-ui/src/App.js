@@ -19,41 +19,41 @@ import PersistLogin from './components/PersistLogin';
 function App() {
   const [manhwaToShow, setManhwaToShow] = useState([]);
   const [genreToShow, setGenreToShow] = useState([]);
-
-  //   if(window.Prototype) {
-  //     delete Object.prototype.toJSON;
-  //     delete Array.prototype.toJSON;
-  //     delete String.prototype.toJSON;
-  // }
+  const [userStatus, setUserStatus] = useState([])
 
   return (
     <>
-      <BrowserRouter>
-        <div className="App">
-          <Navigation />
-          <Routes>
+      <div className="App">
+        <BrowserRouter>
 
-            {/* public routes */}
-            <Route path="/" exact element={<HomePage setManhwaToShow={setManhwaToShow} setGenreToShow={setGenreToShow} />} />
-            <Route path="/browse-all" element={<BrowseAllPage setManhwaToShow={setManhwaToShow} setGenreToShow={setGenreToShow} />} />
-            <Route path="/manhwa/:manhwa/" element={<ManhwaPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} genreToShow={genreToShow} />} />
-            <Route path="/genre/:genres/" element={<GenrePage genreToShow={genreToShow} setManhwaToShow={setManhwaToShow} />} />
-            <Route path="/results/:filter/" element={<ResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} />} />
-            <Route path="/search-results/:search" element={<SearchResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} />} />
-            <Route path="/information" element={<InformationPage />} />
-            <Route path='/register' element={<RegisterPage />} />
-            <Route path='/login' element={<LoginPage />} />
+          <Navigation userStatus={userStatus} setUserStatus={setUserStatus} />
 
-            {/* protected routes */}
-            <Route element={<PersistLogin />}>
-              <Route element={<RequireAuth />}>
-                <Route path="/user-page" element={<UserPage />} />
+          <section className="Main">
+            <Routes>
+
+              {/* public routes */}
+              <Route path="/" exact element={<HomePage setManhwaToShow={setManhwaToShow} setGenreToShow={setGenreToShow} />} />
+              <Route path="/browse-all" element={<BrowseAllPage setManhwaToShow={setManhwaToShow} setGenreToShow={setGenreToShow} />} />
+              <Route path="/manhwa/:manhwa/" element={<ManhwaPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} genreToShow={genreToShow} userStatus={userStatus} />} />
+              <Route path="/genre/:genres/" element={<GenrePage genreToShow={genreToShow} setManhwaToShow={setManhwaToShow} />} />
+              <Route path="/results/:filter/" element={<ResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} />} />
+              <Route path="/search-results/:search" element={<SearchResultsPage manhwaToShow={manhwaToShow} setManhwaToShow={setManhwaToShow} />} />
+              <Route path="/information" element={<InformationPage />} />
+              <Route path='/register' element={<RegisterPage />} />
+              <Route path='/login' element={<LoginPage setUserStatus={setUserStatus} />} />
+
+              {/* protected routes */}
+              <Route element={<PersistLogin />}>
+                <Route element={<RequireAuth />}>
+                  <Route path="/user-page" element={<UserPage setManhwaToShow={setManhwaToShow} userStatus={userStatus} />} />
+                </Route>
               </Route>
-            </Route>
 
-          </Routes>
-        </div>
-      </BrowserRouter>
+            </Routes>
+          </section>
+
+        </BrowserRouter>
+      </div>
     </>
   );
 }
