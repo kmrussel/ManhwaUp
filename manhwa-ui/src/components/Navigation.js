@@ -4,20 +4,21 @@ import Search from './Search'
 import useLogout from '../hooks/useLogout';
 import useAuth from '../hooks/useAuth'
 
-function Navigation({setUserStatus, userStatus}) {
+function Navigation({ setUserStatus, userStatus }) {
     const logout = useLogout();
     const navigate = useNavigate();
-    const { auth } = useAuth(); 
+    const { auth } = useAuth();
 
     const signOut = async () => {
         await logout();
         setUserStatus('LoggedOut')
         navigate('/');
     }
-    
+
     return (
         <nav className="menu">
             <Link to="/" exact> <img src={Logo} /> </Link>
+            
             <Link to="/" exact> Home </Link>
             <Link to="/browse-all"> Browse </Link>
             <Link to="/information">Help</Link>
@@ -34,7 +35,6 @@ function Navigation({setUserStatus, userStatus}) {
                     </>
 
             }
-
             <Search />
         </nav>
     );

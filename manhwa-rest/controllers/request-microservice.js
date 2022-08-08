@@ -14,7 +14,7 @@ router.post('/get-data', async (req, res) => {
 
     const uuid = uuidvv4();
     const url = req.body.url
-    
+
     if (!url) {
         res.sendStatus(400)
     }
@@ -44,10 +44,10 @@ router.post('/get-data', async (req, res) => {
                     if (message !== 'error') {
                         res.status(201).json(JSON.parse(message)[0]);
                     } else {
-                        res.status(404).json({error: 'invalid url'})
+                        res.status(404).json({ error: 'invalid url' })
                     }
-                  
-                } 
+
+                }
             } catch (error) {
                 console.error(error)
                 res.sendStatus(401)

@@ -11,17 +11,15 @@ import userInfoRoute from './controllers/user-info-controller.mjs'
 import credentials from './middleware/credentials.js';
 import requestRoute from './controllers/request-microservice.js';
 import readingListRoute from './controllers/reading-list-controller.mjs';
-const app = express();
 
+const app = express();
 const PORT = process.env.PORT;
 
 app.use(credentials);
-app.use(cors({origin: 'http://localhost:8000'}))
+app.use(cors({ origin: 'http://localhost:8000' }))
 
 app.use(express.urlencoded({ extended: false }));
-
 app.use(express.json());
-
 app.use(cookieParser());
 
 // routes

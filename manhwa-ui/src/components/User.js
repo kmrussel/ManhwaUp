@@ -9,17 +9,17 @@ const User = ({ user, setManhwaToShow, userStatus }) => {
 
     const navigate = useNavigate();
 
-    console.log(readingList.length)
     const manhwaShown = manhwa => {
         setManhwaToShow(manhwa);
         navigate(`/manhwa/${manhwa.title}`);
     }
 
     return (
-        <>
+        <div className="user-page">
 
-            Welcome {username}!
-            <p>Reading List</p>
+            <h2>Welcome {username}!</h2>
+            <h4>Reading List</h4>
+            <section className="reading-list">
             <table>
                 <thead>
                     <tr>
@@ -32,9 +32,12 @@ const User = ({ user, setManhwaToShow, userStatus }) => {
             </table>
             <tbody>
                 {readingList.map((manhwaID, i) => <ReadingList manhwaID={manhwaID} manhwaShown={manhwaShown} key={i} index={readingList.indexOf(manhwaID)} userStatus={userStatus} />)}
+            
             </tbody>
+            </section>
 
-        </>
+
+        </div>
 
 
     )

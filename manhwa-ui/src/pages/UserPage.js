@@ -24,10 +24,10 @@ function UserPage({ setManhwaToShow, userStatus }) {
         setUser(response.data)
       } catch (error) {
         console.log(error)
-      }
-    }
+      };
+    };
 
-    loadUser()
+    loadUser();
 
     return () => {
 
@@ -35,18 +35,19 @@ function UserPage({ setManhwaToShow, userStatus }) {
       controller.abort();
     }
 
-  }, [])
+  }, []);
 
 
-    return (
-      <article>
-        <h2>User page</h2>
-        {
-          user ? <User user={user} setManhwaToShow={setManhwaToShow} userStatus={userStatus} /> : <p></p>
+  return (
+    <article>
+      {
+        user ?
+          <User user={user} setManhwaToShow={setManhwaToShow} userStatus={userStatus} />
+          : <p></p>
+      }
 
-        }
-      </article>
-    )
+    </article>
+  )
 
 
 }

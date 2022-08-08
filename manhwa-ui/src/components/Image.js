@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Image = ({ url, height, width }) => {
-
     const [image, setImage] = useState();
 
+    // fetch image from microservice
     useEffect(() => {
+        
         if (url) {
             const getData = async (url) => {
                 const response = await fetch('/get-data', {
@@ -13,24 +14,22 @@ const Image = ({ url, height, width }) => {
                     headers: {
                         'Content-Type': 'application/json'
                     }
-                })
-                const data = await response.json()
-    
-                setImage(data.image)
-                
-                
+                });
+                const data = await response.json();
+
+                setImage(data.image);
             }
-            getData(url)
+            getData(url);
         }
 
 
     }, [url])
-    
-  return (
-    
-    <img src= {`${image}`} height={height} width={width} ></img>
-    
-  )
+
+    return (
+
+        <img src={`${image}`} height={height} width={width} ></img>
+
+    )
 }
 
 export default Image; 

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import ReadingListButton from './ReadingListButton'
 import Image from './Image'
 
-const ReadingList = ({ manhwaID, manhwaShown , index, userStatus}) => {
+const ReadingList = ({ manhwaID, manhwaShown, index, userStatus }) => {
     const [manhwa, setManhwa] = useState();
     index = index + 1
+
+    // obtains a single manhwa on page load
     useEffect(() => {
 
         const getManhwa = async () => {
@@ -22,19 +24,20 @@ const ReadingList = ({ manhwaID, manhwaShown , index, userStatus}) => {
         }
 
         getManhwa();
-        
+
     }, [])
-    
+
+
     return (
         <>
             {manhwa ?
                 <tr>
                     <td>{index}</td>
                     <td><Image url={manhwa.url} height={100} width={70} /></td>
-                    <td>{manhwa.title}</td>
+                    <td onClick={() => manhwaShown(manhwa)}><a href="#">{manhwa.title}</a></td>
                     <td><ReadingListButton userStatus={userStatus} id={manhwa._id} buttonmsg={'Undo'} /></td>
                 </tr>
-                
+
                 : <p></p>
 
             }

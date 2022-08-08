@@ -4,22 +4,193 @@
   font-size: 15pt; 
 }
 
+.Main{
+  margin-top: 150px;
+  padding: 4%; 
+}
 
 p{
   font-size: 15pt; 
+ 
 }
 
-ul{
+
+.search-form input {
+  border-radius: 5px; 
+  border-color: rgb(194, 194, 194);
+  margin: 0 10px; 
+  border-style: solid; 
+  border-width: thin;
+}
+.home h1 {
+  text-align: center;
+  padding: 10px;
+  margin:0; 
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #546FA6;
+  color: white;
+}
+
+.user-page h4 {
+  text-align: center;
+  padding: 10px;
+  margin:0; 
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #546FA6;
+  color: white;
+}
+
+.message {
+  background-color:rgb(236, 236, 236);
+  border-radius: 4px;
+  text-align: center;
+  width: 40%; 
+}
+
+.home h3 {
+  color: #3B343D;
+}
+
+.genre-border {
+  border: solid;
+  border-color: #546FA6;
+  background-color: #546FA6; 
+  height: 1px; 
+  width: 90%;
+  margin-left: 0; 
+}
+
+.genre-sec h2 {
+  padding-bottom: 1px; 
+}
+
+.features, .reading-list{
+  padding: 0 10px; 
+  margin: 0; 
+  border: 0; 
   font-size: 18pt;
+  border:#546FA6;
+  border-style: solid; 
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-width: 2px;  
+}
+
+
+nav{
+  overflow: hidden;
+  float: left;
+  position: fixed; 
+  top: 0px;
+  width: 100%; 
+  height: 10%; 
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 0.5px 4px;
+}
+
+nav a {
+  float: inline-start; 
+  padding: 10px 10px;
+  text-decoration-line: none;
+  font-weight: 400;
+  color: #546FA6;
+}
+
+nav a:visited {
+  color: #546FA6;
+}
+nav form {
+  float: right; 
+  display: inline;
+  padding: 20px;
+}
+
+
+button {
+  padding: 7px 10px; 
+  border-radius: 5px; 
+  color: white;
+  background-color: #546FA6; 
+  border-style: none;
+  font-weight: bold; 
+}
+
+button:hover {
+  background-color: #3B343D;
+}
+
+.manhwa-general-info {
+  display: flex;
+}
+
+.manhwa-general-info section {
+  padding: 30px;
+}
+.user-info {
+  text-align: center; 
+}
+
+.user-info label {
+  display: block; 
+}
+
+.user-info input {
+  border-radius: 5px; 
+  border-color: rgb(194, 194, 194);
+  padding: 1% 20%; 
+  border-style: solid; 
+  border-width: thin;
+  text-align: left; 
+}
+
+.user-input {
+  padding: 10px 0  
+}
+.register-requirements {
+  inline-size: 60%; 
+  overflow-wrap: break-word; 
+  font-size: 15px;
+  color:rgb(110, 110, 110)
+}
+
+.user-enter { 
+  display: inline-block; 
+  text-align: left; 
+}
+
+.go-sign-in {
+  padding: 5% 0; 
+  font-size: 15px; 
+  color:rgb(110, 110, 110);
+}
+
+.info-bottom {
+  text-align: center; 
+  font-size: 15px; 
+  color:rgb(110, 110, 110);
+}
+
+.login-input {
+  padding: 5% 20%; 
+}
+
+.filter {
+  border-color: #546FA6;
+  border-radius: 8px;
+  border-style: solid;
+}
+
+
+tr, td{
+  color:#3B343D;
+  border-width: 0 0 3px 0;
+  border-style:solid;
 }
 
 
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px
-}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -42,8 +213,8 @@ ul{
   color: rgb(0, 0, 0);
 }
 
-.App-link {
-  color: #61dafb;
+a:visited{
+  color: #6e7267;
 }
 
 .tooltip {

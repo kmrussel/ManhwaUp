@@ -4,6 +4,7 @@ const useLogout = () => {
     const { setAuth } = useAuth();
 
     const logout = async () => {
+        // clear auth data 
         setAuth({});
 
         try {
@@ -15,12 +16,12 @@ const useLogout = () => {
                 }
             });
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
 
     }
 
     return logout;
-}
+};
 
 export default useLogout; 

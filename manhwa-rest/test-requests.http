@@ -64,11 +64,11 @@ content-type: application/json
 }
 ###
 
-POST http://localhost:3000/manhwas/filter HTTP/1.1
+POST http://localhost:3000/manhwas/genres HTTP/1.1
 content-type: application/json
 
 
-    {"genres": ["Fantasy","Romance"]}
+    {"genres": "Romance", "limit": 5}
 
 
 ###

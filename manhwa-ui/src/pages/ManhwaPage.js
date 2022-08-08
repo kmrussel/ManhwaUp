@@ -14,17 +14,18 @@ export const ManhwaPage = ({ manhwaToShow, userStatus }) => {
 
 
     return (
-        <div>
-
-            <Image url={url} height={300} width={210} />
-            <section>
-                <h2>{title}</h2>
-                <p>Author(s): {authors.join(", ")}</p>
-                <p>Released {date} • {manhwaStatus}</p>
-                <p>Genres: {genres.join(", ")}</p>
-            <Description url={url} />
+        <div className="Manhwa-page">
+            <section className="manhwa-general-info">
+                <Image url={url} height={300} width={210} />
+                <section>
+                    <h2>{title}</h2>
+                    <p>Author(s): {authors.join(", ")}</p>
+                    <p>Released {date} • {manhwaStatus}</p>
+                    <p>Genres: {genres.join(", ")}</p>
+                </section>
             </section>
-            
+
+            <Description url={url} />
             <ReadingListButton userStatus={userStatus} id={id} buttonmsg={'Add to reading list'} />
         </div>
     )

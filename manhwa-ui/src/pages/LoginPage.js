@@ -4,18 +4,18 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 
-function LoginPage ({setUserStatus}) {
+function LoginPage({ setUserStatus }) {
     const { setAuth } = useAuth();
 
-    const navigate = useNavigate(); 
-    const location = useLocation(); 
+    const navigate = useNavigate();
+    const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
     const userRef = useRef();
-    const errRef = useRef(); 
+    const errRef = useRef();
 
     const [email, setEmail] = useState();
-    const [password, setPassword] = useState(); 
+    const [password, setPassword] = useState();
     const [errorMessage, setErrorMessage] = useState(false);
 
     useEffect(() => {
@@ -27,8 +27,10 @@ function LoginPage ({setUserStatus}) {
     }, [email, password]);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); 
-        const user = {"email": `${email}`, "password": `${password}`};
+        e.preventDefault();
+
+        // attempt login 
+        const user = { "email": `${email}`, "password": `${password}` };
         const response = await fetch('/login', {
             method: 'POST',
             body: JSON.stringify(user),
@@ -37,64 +39,71 @@ function LoginPage ({setUserStatus}) {
                 'Content-Type': 'application/json'
             }
         });
-        
-        if(response.status === 201) {
-            const data = await response.json()
-            const username = data.username
+
+        if (response.status === 201) {
+            const data = await response.json();
+            const username = data.username;
             const accessToken = data.accessToken;
             setUserStatus('LoggedIn')
             setAuth({ username, email, password, accessToken })
-            // clear password and email 
+
+            // clear password and email states
             setPassword('');
             setEmail('');
-            navigate(from, { replace: true })
+            navigate(from, { replace: true });
         } else if (response.status === 400) {
             setErrorMessage('Missing email or password');
             errRef.current.focus();
         } else if (response.status === 401) {
-            setErrorMessage(`Email and/or password is incorrect. Please try again`)
+            setErrorMessage(`Email and/or password is incorrect. Please try again`);
             errRef.current.focus();
         } else {
-            setErrorMessage('Login Failed')
+            setErrorMessage('Login Failed');
             errRef.current.focus();
         }
 
     }
 
     return (
-    <section>
-        {/* error message */}
-        <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
-        <h1>Sign In</h1>
-        <form>
-            <label htmlFor="email">Email</label>
-            <input 
-                type="text" 
-                id="email"
-                ref={userRef}
-                autoComplete="off"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                required
-            />
+        <section className="user-info">
+            {/* error message */}
+            <p ref={errRef} className={errorMessage ? "errorMessage" : "offscreen"}>{errorMessage}</p>
 
-            <br/>
-            
-            <label htmlFor="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                autoComplete="off"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                required
-            />
-            <button onClick = {handleSubmit}>Sign In</button>
-        </form>
+            <h1>Sign In</h1>
+            <form className="user-enter">
+                <label htmlFor="email">Email</label>
+                <input
+                    type="text"
+                    id="email"
+                    ref={userRef}
+                    autoComplete="off"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    className="login-input"
+                    required
+                />
 
-        Dont have an account?
-        <Link to="/register">Sign Up</Link>
-    </section>
+                <br />
+
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    autoComplete="off"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    className="login-input"
+                    required
+                />
+                <br></br>
+                <button onClick={handleSubmit}>Sign In</button>
+            </form>
+            <section className="info-bottom">
+                Dont have an account?
+                <Link to="/register">Sign Up</Link>
+            </section>
+
+        </section>
     )
 }
 

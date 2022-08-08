@@ -4,21 +4,22 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-function FilterByGenres( { genre, setManhwaToShow, genreShown}) {
+function FilterByGenres({ genre, setManhwaToShow, genreShown }) {
     const [manhwas, setManhwas] = useState([]);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
+    // fetch manhwas by specific genre
     const loadManhwas = async () => {
-        const params = {"genres": `${genre}`};
+        const params = { "genres": `${genre}`};
         const options = {
             method: 'POST',
-            body: JSON.stringify( params ),
+            body: JSON.stringify(params),
             headers: {
                 'Content-Type': 'application/json'
             }
         };
-        const response = await fetch('/manhwas/genres', options)
-        const data = await response.json()
+        const response = await fetch('/manhwas/genres', options);
+        const data = await response.json();
         setManhwas(data);
     };
 
@@ -28,17 +29,17 @@ function FilterByGenres( { genre, setManhwaToShow, genreShown}) {
     }
 
     useEffect(() => {
-        loadManhwas()
+        loadManhwas();
     }, [])
 
-    
-return (
-    <>
-        
-        <ManhwaList manhwas={manhwas} manhwaShown = {manhwaShown} genreShown={genreShown}></ManhwaList>
 
-    </>
-);
+    return (
+        <>
+
+            <ManhwaList manhwas={manhwas} manhwaShown={manhwaShown} genreShown={genreShown}></ManhwaList>
+
+        </>
+    );
 }
 
 export default FilterByGenres;

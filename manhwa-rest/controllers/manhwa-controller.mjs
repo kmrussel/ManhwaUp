@@ -88,7 +88,7 @@ router.post('/manhwas/genres', (req, res) => {
         filter = req.body.genres;
     };
 
-    manhwas.findManhwaByGenre(filter)
+    manhwas.findManhwaByGenre(req.body.genres, req.body.limit)
         .then(manhwas => {
             res.send(manhwas);
         })

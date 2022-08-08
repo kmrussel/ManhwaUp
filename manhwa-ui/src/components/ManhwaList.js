@@ -19,8 +19,9 @@ function ManhwaList({ manhwas, manhwaShown }) {
                             <CardContent className={"MuiCardContent-root"}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={6} sm={6}>
-                                        <Grid container justifyContent="space-evenly">
-                                        <Image url={manhwa.url} height={250} width={175} />
+                                        <Grid container alignContent='flex-start' alignItems='flex-start' justify='flex-start' >
+                                            <Image url={manhwa.url} height={250} width={175} />
+
                                         </Grid>
                                     </Grid>
                                     <Divider light />
